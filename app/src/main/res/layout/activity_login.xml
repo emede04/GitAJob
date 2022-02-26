@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/steam_fondo"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/loginUsuario"
+        android:layout_width="84dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="34dp"
+        android:drawableTintMode="add"
+        android:shadowColor="@color/steam_azul_claro"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="2.0"
+        android:text="Usuario :"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@+id/txtUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/txtUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtUsuario"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/loginContrasenia"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:fontFamily="sans-serif"
+        android:shadowColor="@color/steam_azul_claro"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="2.0"
+        android:text="Contraseña: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtContrasenia"
+        app:layout_constraintEnd_toEndOf="@+id/loginUsuario"
+        app:layout_constraintStart_toStartOf="@+id/loginUsuario"
+        app:layout_constraintTop_toTopOf="@+id/txtContrasenia"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <CheckBox
+        android:id="@+id/checkBoxLogin"
+        android:layout_width="225dp"
+        android:layout_height="47dp"
+
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="120dp"
+        android:text=" recordar usuario y contraseña"
+        android:textColor="@color/steam_azul_claro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bRegistrar"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="224dp"
+        android:layout_height="187dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/steam_azul_claro"
+        app:layout_constraintBottom_toTopOf="@+id/txtUsuario"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/bLogin"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginEnd="71dp"
+        android:backgroundTint="@color/steam_azul_claro"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="@+id/bRegistrar"
+        app:layout_constraintEnd_toStartOf="@+id/bRegistrar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bRegistrar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="46dp"
+        android:backgroundTint="@color/steam_azul_claro"
+        android:text="Registrar"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bLogin"
+
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasenia" />
+
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/no_se_si_gris_O_zul"
+        android:ems="10"
+
+        android:hint="  Introduzca su usuario"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="@color/steam_azul_claro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/loginUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/txtContrasenia"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+
+        android:layout_marginEnd="24dp"
+        android:background="@color/no_se_si_gris_O_zul"
+        android:ems="10"
+
+        android:hint="introduzca su contraseña"
+
+        android:inputType="text"
+        android:text=""
+        android:textColor="#2196F3"
+        app:layout_constraintBottom_toTopOf="@+id/bRegistrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="256dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="13dp"
+        android:text="git a job pls"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/stack"
+        android:layout_width="127dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxLogin"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="110dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="174dp"
+        android:layout_marginEnd="2dp"
+        android:text="not provided by"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/stack"
+        app:layout_constraintEnd_toStartOf="@+id/stack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/stack" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
