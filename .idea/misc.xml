@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/borde.xml" value="0.3828125" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_mail.xml" value="0.3828125" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_search.xml" value="0.3828125" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_settings.xml" value="0.3828125" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_datos_de_steam.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_datos_steam.xml" value="0.33" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_login.xml" value="0.3625" />
-        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/fragment_datos__de__steam.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/fragment_datos_de_steam.xml" value="0.25" />
       </map>

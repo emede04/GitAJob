@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.gitajob.Constantes;
+import com.example.gitajob.steamdata.Constantes;
 import com.example.gitajob.R;
 
 import java.net.HttpURLConnection;

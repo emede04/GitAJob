@@ -1,4 +1,4 @@
-package com.example.gitajob;
+package com.example.gitajob.steamdata;
 
 
 //clase que gestionara las apis y forma de acceder a ellas dependiendo de usuario/videojuego;
