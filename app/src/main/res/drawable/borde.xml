@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="ring" >
+    <solid android:color="@android:color/transparent" />
+    <padding android:bottom="20dp"></padding>
+    <padding android:left="20dp" ></padding>
+    <padding android:top="20dp"></padding>
+    <padding android:right="20dp"></padding>
+
+
+    <stroke android:width="12dip" android:color="@color/steam_azul_claro"/>
+</shape>

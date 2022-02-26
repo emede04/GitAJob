@@ -3,9 +3,7 @@ package com.example.gitajob.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 boolean kapasao=   bd.verifyUserData(user.getText().toString(), password.getText().toString());
                 if(kapasao){
                     Toast.makeText(this, "Pa dentro", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), DatosDeSteam.class);
 
 
                     startActivity(intent);
@@ -95,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         bd.insertUsuarios(user.getText().toString(), password.getText().toString());
                         Toast.makeText(this, "bd", Toast.LENGTH_LONG + 2).show();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), DatosDeSteam.class);
                         startActivity(intent);
                         finish();
 
