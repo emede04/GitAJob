@@ -20,19 +20,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    String useractual ="";
-    ArrayList<PlayerSummaries> listaResumenUsuario;
-    HttpSteam conexion = new HttpSteam();
-    Constantes c = new Constantes(useractual);
+    String useractual ="";   //mi atributo usuario
+    ArrayList<PlayerSummaries> listaResumenUsuario;  //esto sera la lista de amigos de mi usuario, juegos y noticas, ya que user solo hay uno cuando se loguea
+    HttpSteam conexion = new HttpSteam();  //creo mi conexion
+    Constantes c = new Constantes(useractual);   //mi objeto que inicializa que pueda tener acceso a todas las constantes que necesite
+
+
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //inicializo mis variables
         useractual = getIntent().getExtras().getString("clave de steam");
-        System.out.println("esta es la id que pasamos"+useractual);
-        c.setIdpasada(useractual);
         System.out.println(useractual);
-         listaResumenUsuario = new ArrayList<PlayerSummaries>();
+         listaResumenUsuario = new ArrayList<>();
         new taskConexiones().execute("GET", "");
 
     }
@@ -52,6 +57,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+
+
+
+    //TODO -
+    public void cargarImagenes(){
+
+
+    }
+
+    public void cargarListaAmigos(){
+
+    }
+    public void cargarListaJuegos(){
+
+    }
+    public void cargarNotcias(){
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //clase para cargar los datos a un json
 
 
@@ -65,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado = conexion.cargarUsuarioBase(getUseractual());
                     break;
 
+                    //ver el post execute que he borrao
             }
             return resultado;
         }
@@ -73,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         protected void onPostExecute(String s) {
             try {
                 if (s != null) {
-                    Log.d("D", "por si no se cargan los datos lol: " + s);
+                    Log.d("mio", "Clase AsyncTask : el parseo bueno: " + s);
                     JSONObject jsonObject = new JSONObject(s);
                     JSONObject objeto2 = jsonObject.getJSONObject("data");
 
@@ -106,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         PlayerSummaries usuario = new PlayerSummaries(steamid, communityvisibilitystate, profilestate, personaname, profileurl, avatar, avatarmedium, avatarfull, avatarhash, personastate, realname, primaryclanid, timecreated, personastateflags, loccountrycode, locstatecode, loccityid);
 
-                        System.out.println("salimo   " + usuario.getPersonaname());
+
                     }
 
                     // adaptador.notifyDataSetChanged();

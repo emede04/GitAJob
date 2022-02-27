@@ -12,9 +12,7 @@ public class Constantes {
     private static final String STEAM_PROFILE_URL_END = "/?json=1";
     private static final String STEAM_PROFILE_DEL_RANDOM_CON_DINERO = "76561197961491680";
     //es con la que he estado haciendo pruebas y ya de paso la dejo de inicio para mostrar el uso de la aplicacion
-
-
-    private String getNewsForApp;
+   private String getNewsForApp;
     private String GetGlobalAchievementPercentagesForApp;
     private String GetFriendList;
     private String GetPlayerSummaries;
@@ -89,7 +87,6 @@ public class Constantes {
     }
 
     public String getGetPlayerSummaries() {
-        System.out.println(GetPlayerSummaries);
         return GetPlayerSummaries;
     }
 

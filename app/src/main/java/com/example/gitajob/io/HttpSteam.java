@@ -1,5 +1,7 @@
 package com.example.gitajob.io;
 
+import android.util.Log;
+
 import com.example.gitajob.steamdata.Constantes;
 
 import java.io.BufferedReader;
@@ -11,14 +13,13 @@ public class HttpSteam {
 
     public String cargarUsuarioBase(String clave){
         Constantes c = new Constantes(clave);
-        System.out.println("entra");
-        HttpURLConnection http = null;
+        Log.d("mio"," Clase HTTP STEAM comenzamos a cargar los usuarios");
+            HttpURLConnection http = null;
                 String content = null;
                 try {
                     //formaremos la url juntando la url más el endpoint.
                     // Así como la cabecera, que permitira decidir la codificación de los datos que se están trasmitiendo.
                     URL url = new URL( c.getGetPlayerSummaries());
-                    System.out.println(c.getIdpasada());
                     http = (HttpURLConnection)url.openConnection();
                     http.setRequestProperty("Content-Type", "application/json");
                     http.setRequestProperty("Accept", "application/json");
@@ -35,7 +36,6 @@ public class HttpSteam {
                         }
                         content = sb.toString();
                         reader.close();
-                        System.out.println(content);
                     }
                 }
                 catch(Exception e) {
@@ -50,5 +50,17 @@ public class HttpSteam {
             }
 
 
+    //TODO -Pues eso veras las risas mañana
 
+    public String cargarNoticias(String clave) {
+
+        return clave;
     }
+
+
+    public String cargarJuegos(String clave) {
+
+        return clave;
+    }
+
+}

@@ -82,7 +82,7 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
             http.setRequestMethod("GET");
 
           if (http.getResponseCode() == HttpURLConnection.HTTP_CONFLICT) {
-                Log.d("datos de steam","ea error las aplicacion correcta");
+                Log.d("mio","datos de steam :ea error las aplicacion correcta");
               AlertDialog.Builder builder = new AlertDialog.Builder(this);
               builder.setMessage("Esa id de steam no existe")
                       .setTitle("Error")
@@ -91,7 +91,7 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
                 return false;
             } else {
 
-                Log.d("datos de steam","se obtiene las api correcta");
+                Log.d("mio","datos de steam se obtiene las api correcta");
               Toast.makeText(this, "conectados", Toast.LENGTH_SHORT).show();
                 return true;
             }
