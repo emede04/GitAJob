@@ -49,7 +49,9 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
 
               if(quepasa){
                   Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                  intent.putExtra("clave de steam",clave);
                   startActivity(intent);
+
                   finish(); }
 
               else{
