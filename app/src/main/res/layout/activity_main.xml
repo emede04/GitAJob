@@ -8,6 +8,98 @@
     tools:context=".activity.MainActivity">
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="399dp"
+        android:layout_height="272dp"
+        android:layout_marginEnd="1dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@android:color/transparent"
+
+        app:cardCornerRadius="10dp"
+        app:cardElevation="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/rListaVideojuegos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="272dp">
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="138dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="43dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/userphoto"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/userphoto"
+                app:layout_constraintTop_toBottomOf="@+id/userphoto" />
+
+            <ImageView
+                android:id="@+id/userphoto"
+                android:layout_width="137dp"
+                android:layout_height="129dp"
+                android:layout_marginTop="31dp"
+                app:layout_constraintBottom_toTopOf="@+id/user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.122"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/steamid"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="43dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/userphoto"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.245" />
+
+            <TextView
+                android:id="@+id/realname"
+                android:layout_width="121dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="76dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/steamid"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/state"
+                android:layout_width="121dp"
+                android:layout_height="36dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/realname"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/realname"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.711" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <LinearLayout
         android:id="@+id/bMenu"
         android:layout_width="match_parent"
@@ -72,4 +164,14 @@
             app:icon="@drawable/ic_settings"
             app:tint="@color/white" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rListaVideojuegos"
+        android:layout_width="406dp"
+        android:layout_height="395dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bMenu"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

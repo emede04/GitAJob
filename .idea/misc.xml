@@ -5,16 +5,18 @@
       <map>
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3671875" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/borde.xml" value="0.3828125" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/fondo.xml" value="0.221875" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_discord.xml" value="0.3671875" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3671875" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_mail.xml" value="0.3828125" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_person.xml" value="0.3671875" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_search.xml" value="0.3828125" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/drawable/ic_settings.xml" value="0.3828125" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_adaptador.xml" value="0.33" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_datos_de_steam.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_datos_steam.xml" value="0.33" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_login.xml" value="0.3625" />
-        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/activity_main.xml" value="0.2215909090909091" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/fragment_datos__de__steam.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/layout/fragment_datos_de_steam.xml" value="0.25" />
       </map>
@@ -25,5 +27,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

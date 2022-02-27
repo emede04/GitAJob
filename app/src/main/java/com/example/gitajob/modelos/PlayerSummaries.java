@@ -20,6 +20,28 @@ public class PlayerSummaries {
     String loccityid;
 
 
+
+
+    PlayerSummaries(String steamid, String communityvisibilitystate, String avatarmedium, String personaname, String profileurl, String avatarfull, String personastate, String realname, String primaryclanid, String timecreated, String personastateflags, String loccountrycode, String locstatecode, String loccityid) {
+        this.steamid = steamid;
+        this.communityvisibilitystate = communityvisibilitystate;
+        this.personaname = personaname;
+        this.profileurl = profileurl;
+        this.avatarfull = avatarfull;
+        this.avatarmedium =
+        this.personastate = personastate;
+        this.realname = realname;
+        this.primaryclanid = primaryclanid;
+        this.timecreated = timecreated;
+        this.personastateflags = personastateflags;
+        this.loccountrycode = loccountrycode;
+        this.locstatecode = locstatecode;
+        this.loccityid = loccityid;
+    }
+
+
+
+
     public PlayerSummaries(String steamid, String communityvisibilitystate, String profilestate, String personaname, String profileurl, String avatar, String avatarmedium, String avatarfull, String avatarhash, String personastate, String realname, String primaryclanid, String timecreated, String personastateflags, String loccountrycode, String locstatecode, String loccityid) {
         this.steamid = steamid;
         this.communityvisibilitystate = communityvisibilitystate;
@@ -38,6 +60,18 @@ public class PlayerSummaries {
         this.loccountrycode = loccountrycode;
         this.locstatecode = locstatecode;
         this.loccityid = loccityid;
+    }
+
+    public PlayerSummaries() {
+
+    }
+
+    public PlayerSummaries(String steamid, String communityvisibilitystate, String personaname, String avatarmedium, String realname) {
+        this.steamid = steamid;
+        this.communityvisibilitystate = communityvisibilitystate;
+        this.personaname = personaname;
+        this.avatarmedium = avatarmedium;
+        this.realname = realname;
     }
 
     public String getSteamid() {

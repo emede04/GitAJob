@@ -32,8 +32,9 @@ public class Constantes {
         GetPlayerSummaries = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + STEAM_KEY + "&steamids=" + idpasada;
         GetPlayerAchievements = " http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
         GetUserStatsForGame = " http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
-        GetOwnedGames = ": http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&format=json";
+        GetOwnedGames = ": http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + STEAM_KEY +"&include_appinfo=true&steamid=" + idpasada + "&format=json";
         GetRecentlyPlayedGames = " http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&format=json";
+
 
     }
 
