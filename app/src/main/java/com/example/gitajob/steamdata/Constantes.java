@@ -11,7 +11,7 @@ public class Constantes {
     private static final String STEAM_KEY = "3A14C27710748C26952CA27A940F45CA";
     private static final String STEAM_PROFILE_URL_START = "https://steamcommunity.com/profiles/";
     private static final String STEAM_PROFILE_URL_END = "/?json=1";
-    private static final String STEAM_PROFILE_DEL_RANDOM_CON_DINERO = "";
+    private static final String STEAM_PROFILE_DEL_RANDOM_CON_DINERO = "76561197961491680";
     //es con la que he estado haciendo pruebas y ya de paso la dejo de inicio para mostrar el uso de la aplicacion
 
 

@@ -1,6 +1,7 @@
 package com.example.gitajob.activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,33 +30,48 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_datos_steam);
         bVerifica = findViewById(R.id.bVerificar);
         supuestaclavesteam = findViewById(R.id.clavedesteam);
-        bVerifica.setOnClickListener(this::onClick);
-        if (android.os.Build.VERSION.SDK_INT > 9)
-        {
-            StrictMode.ThreadPolicy policy = new
-                    StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
+        bVerifica.setOnClickListener(this);
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
 
     @Override
     public void onClick(View v) {
-
+    boolean quepasa;
         switch (v.getId()/*to get clicked view id**/) {
             case R.id.bVerificar:
                 String clave = supuestaclavesteam.getText().toString().trim();
 
+
+              quepasa=  atajo(clave);
+
+              if(quepasa){
+                  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                  startActivity(intent);
+                  finish(); }
+
+              else{
+                clave = Constantes.getSteamProfileDelRandomConDinero();
                 atajo(clave);
+                  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                  startActivity(intent);
+                  finish(); }
+                break;
+            default:
 
         }
 
 
-    }
+        }
+
+
+
 
     public boolean atajo (String clave){
-        String parseao = Constantes.getSteamProfileUrlStart()+clave.toString()+Constantes.getSteamProfileUrlEnd();
-        HttpURLConnection http = null;
+        String parseao = Constantes.getSteamProfileUrlStart()+ clave +Constantes.getSteamProfileUrlEnd();
+        HttpURLConnection http;
 
         try {
             System.out.println(parseao);

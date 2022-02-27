@@ -9,9 +9,9 @@
 
 
     <LinearLayout
-        android:id="@+id/bottomMenu"
-        android:layout_width="407dp"
-        android:layout_height="52dp"
+        android:id="@+id/bMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="679dp"
         android:layout_marginEnd="4dp"
@@ -19,51 +19,57 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-        <ImageView
+        <Button
             android:id="@+id/search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+
+            android:layout_width="26dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:alpha="0.2"
-            android:src="@drawable/ic_search"
+            app:icon="@drawable/ic_search"
             app:tint="@color/white" />
 
-        <ImageView
+        <Button
             android:id="@+id/mail"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="26dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:alpha="0.2"
             android:src="@drawable/ic_mail"
+            app:icon="@drawable/ic_mail"
             app:tint="@color/white" />
 
-        <ImageView
+        <Button
+            android:id="@+id/bdiscord"
             android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:alpha="0.2"
-            android:src="@drawable/ic_discord"
+            app:icon="@drawable/ic_discord"
             app:tint="@color/white" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <Button
+            android:id="@+id/bperfil"
+            android:layout_width="26dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:alpha="0.2"
             android:src="@drawable/ic_person"
+            app:icon="@drawable/ic_person"
             app:tint="@color/white" />
 
-        <ImageView
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+        <Button
+            android:layout_width="26dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:alpha="0.2"
-            android:src="@drawable/ic_settings"
-            app:tint="@color/steam_azul_claro" />
+            app:icon="@drawable/ic_settings"
+            app:tint="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
