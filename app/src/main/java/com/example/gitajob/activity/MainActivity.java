@@ -184,10 +184,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     JSONObject respuesta = new JSONObject(s);
                     JSONObject objeto1 = respuesta.getJSONObject("response");
                     JSONArray ArrayDeJuegos;
-                    ArrayDeJuegos = objeto1.getJSONArray("game");
+                    ArrayDeJuegos = objeto1.getJSONArray("games");
                     //Pido perdon por el caos pero es que me he estado riendo un buen rato intentanto hacer que esto funcionara y ha sido de puta chiripa lol
                     Iterator iterador = objeto1.keys();
                     numero ="";
+
+
 
                     System.out.println(ArrayDeJuegos.length());
                     while (iterador.hasNext()){
@@ -209,8 +211,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
 
                         miJuego = new Game(appid,name,playtime_forever,img_icon_url,img_logo_url);
-
-                         listaGames = new ArrayList<>();
                         listaGames.add(miJuego);
 
 
