@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import com.bumptech.glide.Glide;
 import com.example.gitajob.R;
 import com.example.gitajob.R.*;
 import com.example.gitajob.modelos.Game;
@@ -21,47 +22,42 @@ import com.example.gitajob.modelos.GamesOwned;
 import java.util.ArrayList;
 
 public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> implements View.OnClickListener{
-    //llamo a mi objeto GamesOwned
-    GamesOwned Juegos;
+    ArrayList<Game> listaJuegos;
     private Activity activity;
-
-    public Adaptador(GamesOwned juegos, Activity activity) {
-        Juegos = juegos;
+    public Adaptador(GamesOwned g, Activity activity){
+        this.listaJuegos = g.getListaDeVideojuegos();
+        System.out.println(g.getListaDeVideojuegos().size());
         this.activity = activity;
-    }
 
+    }
 
     @Override
     public void onClick(View view) {
 
     }
 
-    public Adaptador(Activity activity){
-        this.activity = activity;
-
-    }
-
-
     @NonNull
     @Override
     public RecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(layout.activity_adaptador,parent);
-        RecyclerHolder recyclerHolder = new RecyclerHolder(v);
-        v.setOnClickListener(this);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(layout.activity_adaptador,parent,false);
+        RecyclerHolder recyclerHolder = new RecyclerHolder(vista);
+
         return recyclerHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, int position) {
-        Game singular = Juegos.getListaDeVideojuegos().get(position);
-        
-
+        Game juego = listaJuegos.get(position);
+        holder.horastotales.setText(juego.getPlaytime_forever());
+        holder.nombreJuego.setText(juego.getName());
+        Glide.with(activity)
+                .load(juego.getImg_icon_url())
+                .into(holder.IconoJuego);
     }
 
     @Override
     public int getItemCount() {
-        return Juegos.getListaDeVideojuegos().size();
+        return listaJuegos.size();
     }
 
     public class RecyclerHolder extends ViewHolder {
@@ -71,9 +67,9 @@ public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> i
         public RecyclerHolder(@NonNull View itemView) {
             super(itemView);
 
-            IconoJuego = (ImageView) itemView.findViewById(id.iconoVideojuego);
-            nombreJuego = (TextView) itemView.findViewById(id.nombre);
-            horastotales = (TextView) itemView.findViewById(id.horastotales);
+            IconoJuego =  itemView.findViewById(id.iconoVideojuego);
+            nombreJuego =  itemView.findViewById(id.nombre);
+            horastotales =  itemView.findViewById(id.horastotales);
 
 
         }

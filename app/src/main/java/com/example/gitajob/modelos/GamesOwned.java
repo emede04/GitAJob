@@ -12,7 +12,9 @@ public class GamesOwned {
         ListaDeVideojuegos = listaDeVideojuegos;
     }
 
+     public GamesOwned(){
 
+    }
 
     public String getNumerosdejuegos() {
         return numerosdejuegos;

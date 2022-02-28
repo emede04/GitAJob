@@ -1,6 +1,7 @@
 package com.example.gitajob.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,60 +9,53 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.gitajob.R;
 import com.example.gitajob.adaptador.Adaptador;
-import com.example.gitajob.databinding.ActivityAdaptadorBinding;
 import com.example.gitajob.io.HttpSteam;
+import com.example.gitajob.modelos.Game;
 import com.example.gitajob.modelos.GamesOwned;
 import com.example.gitajob.modelos.PlayerSummaries;
-import com.example.gitajob.steamdata.Constantes;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    String useractual ="";   //mi atributo usuario
-    ArrayList<PlayerSummaries> listaResumenUsuario;  //esto sera la lista de amigos de mi usuario, juegos y noticas, ya que user solo hay uno cuando se loguea
+    String useractual ="";   //saco y hago accesible la iddesteam para los metodos.
     HttpSteam conexion = new HttpSteam();  //creo mi conexion
-    //mi objeto que inicializa que pueda tener acceso a todas las constantes que necesite
+    //declaro las variable
     PlayerSummaries usuario;
     ImageView avatar;
     TextView user;
     TextView steamid;
     TextView state;
     TextView realname;
+
     GamesOwned gamesOwned;
     RecyclerView.LayoutManager modelo;
-    private RecyclerView listaJuegos;
-    private Adaptador adaptador;
+    public RecyclerView listaJuegos;
+    public Adaptador adaptador;
+    public Game miJuego;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adaptador = new Adaptador(this);
-        usuario = new PlayerSummaries();
         setContentView(R.layout.activity_main);
         initComponents();
-        adaptador = new Adaptador(this);
-        usuario = new PlayerSummaries();
         useractual = getIntent().getExtras().getString("clave de steam");
-        listaResumenUsuario = new ArrayList<>();
-        new taskConexiones().execute("GET", "");
 
+        new taskPlayerSummaries().execute("GET", "");
         new taskGetGames().execute("GET","");
-        System.out.println(usuario.getAvatar());
-        cargarUser();
+
 
     }
 
@@ -70,68 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
             view.getId();
     }
-
+    //paso los datos de mi mainactivtiy a async task
     public String getUseractual() {
+
         return useractual;
     }
 
-    public void setUseractual(String useractual) {
-        this.useractual = useractual;
-    }
-
-
-
-
-
-
-    //TODO -
-    public void cargarUser(){
-        Log.d("mio","metodo para cargar los usuarios");
-        System.out.println(usuario.getPersonaname());
-        user.setText(usuario.getPersonaname());
-        state.setText(usuario.getPersonastate());
-        realname.setText(usuario.getRealname());
-        steamid.setText(usuario.getSteamid());
-
-    }
-
-    public void cargarListaAmigos(){
-
-    }
-    public void cargarListaJuegos(){
-
-    }
-    public void cargarNotcias(){
-
-    }
-
-    public void initComponents(){
-        adaptador = new Adaptador(this);
-        usuario = new PlayerSummaries();
-        avatar = (ImageView) findViewById(R.id.userphoto);
-        user = (TextView) findViewById(R.id.user);
-        steamid = findViewById(R.id.steamid);
-        realname = findViewById(R.id.realname);
-        state = findViewById(R.id.state);
-
-    }
-
-    public void setupRecycler(){
-        listaJuegos = (RecyclerView) findViewById(R.id.rListaVideojuegos);
-        listaJuegos = (RecyclerView) findViewById(R.id.rListaVideojuegos);
-        adaptador = new Adaptador(gamesOwned,this);
-        listaJuegos.setAdapter(adaptador);
-        modelo = new LinearLayoutManager(this);
-        listaJuegos.setLayoutManager(modelo);
-
-
-    }
-
-
-    //clase para cargar los datos del perfil de steam
-
-
-    private class taskConexiones extends AsyncTask<String, Void, String> {
+    //AsyncsCorrespondientes
+    //GetPlayerSummaries
+    private  class taskPlayerSummaries extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -144,85 +85,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case "POST":
                     resultado = Integer.toString(conexion.post(strings[1],strings[2]));
                     break;
-                    //ver el post execute que he borrao
-            }
-            System.out.println(resultado);
 
-            return resultado;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            try {
-                if (!s.isEmpty()){
-                    Log.d("D", "DATOS: "+s);
-                    JSONObject jsonObj = new JSONObject(s);
-                    JSONObject objeto1 = jsonObj.getJSONObject("response");
-                    System.out.println(jsonObj.toString());
-                    JSONArray objeto2 = objeto1.getJSONArray("players");
-                    //Pido perdon por el caos pero es que me he estado riendo un buen rato intentanto hacer que esto funcionara lol
-                    Iterator iterador = objeto1.keys();
-                    JSONArray arraydemiuser = new JSONArray();
-
-                        while (iterador.hasNext()){
-                            String llave = (String) iterador.next();
-                            Log.d(" mio",llave);
-                            arraydemiuser = objeto2;
-                        }
-
-
-                    //  api compuesta por un objeto con un array de objetos dentro, por lo que necesitamos
-                    for(int i=0; i<arraydemiuser.length();){
-                        String steamid = (String) arraydemiuser.getJSONObject(i).getString("steamid");
-                        String communityvisibilitystate = (String) arraydemiuser.getJSONObject(i).getString("communityvisibilitystate");
-                        String personaname =  (String) arraydemiuser.getJSONObject(i).getString("personaname");
-                        String avatarfull = (String) arraydemiuser.getJSONObject(i).getString("avatarfull");
-                        String realname = (String) arraydemiuser.getJSONObject(i).getString("realname");
-                        System.out.println(avatarfull);
-                        usuario = new PlayerSummaries(steamid,communityvisibilitystate,personaname,avatarfull,realname);
-                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
-                        //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-                        Glide.with(MainActivity.this)
-                                //esto es una biblioteca donde subir icones svg
-                                .load(avatarfull).fitCenter()
-                                .error(R.drawable.ic_launcher_foreground)
-                                .into(avatar);
-
-                        System.out.println("estoy en el for lol");
-                        cargarUser();
-
-                        i++;
-                    }
-                    //Cuando se obtienen todos los campeones, debemos avisar al adaptador para informar
-                    // de que debe actualizarse
-                    //adaptador.notifyDataSetChanged();
-                    Log.d("DEB", "he ssalido del array lol");
                 }
-            }
-            catch (JSONException e){
-                System.out.println(e);
-            }
-        }
-
-
-
-    }
-    private class taskGetGames extends AsyncTask<String, Void, String> {
-
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String resultado = "";
-            switch (strings[0]) {
-                case "GET":
-                    resultado = conexion.cargarJuegos(getUseractual());
-                    break;
-                case "POST":
-                    resultado = Integer.toString(conexion.postGamesOwned(strings[1],strings[2]));
-                    break;
-                //ver el post execute que he borrao
-            }
-            System.out.println(resultado);
 
             return resultado;
         }
@@ -231,11 +95,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         protected void onPostExecute(String s) {
             try {
                 if (!s.isEmpty()){
-                    Log.d("D", "DATOS: "+s);
+                    Log.d("D", "se cargan los datos de profile:");
                     JSONObject jsonObj = new JSONObject(s);
                     JSONObject objeto1 = jsonObj.getJSONObject("response");
-                    System.out.println(jsonObj.toString());
-                    JSONArray objeto2 = objeto1.getJSONArray("games");
+                    JSONArray objeto2 = objeto1.getJSONArray("players");
                     //Pido perdon por el caos pero es que me he estado riendo un buen rato intentanto hacer que esto funcionara lol
                     Iterator iterador = objeto1.keys();
                     JSONArray arraydemiuser = new JSONArray();
@@ -246,14 +109,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         arraydemiuser = objeto2;
                     }
 
-
                     //  api compuesta por un objeto con un array de objetos dentro, por lo que necesitamos
                     for(int i=0; i<arraydemiuser.length();){
-                        String steamid = (String) arraydemiuser.getJSONObject(i).getString("steamid");
-                        String communityvisibilitystate = (String) arraydemiuser.getJSONObject(i).getString("communityvisibilitystate");
-                        String personaname =  (String) arraydemiuser.getJSONObject(i).getString("personaname");
-                        String avatarfull = (String) arraydemiuser.getJSONObject(i).getString("avatarfull");
-                        String realname = (String) arraydemiuser.getJSONObject(i).getString("realname");
+                        String steamid = arraydemiuser.getJSONObject(i).getString("steamid");
+                        String communityvisibilitystate = arraydemiuser.getJSONObject(i).getString("communityvisibilitystate");
+                        String personaname = arraydemiuser.getJSONObject(i).getString("personaname");
+                        String avatarfull = arraydemiuser.getJSONObject(i).getString("avatarfull");
+                        String realname = arraydemiuser.getJSONObject(i).getString("realname");
                         System.out.println(avatarfull);
                         usuario = new PlayerSummaries(steamid,communityvisibilitystate,personaname,avatarfull,realname);
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
@@ -264,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 .error(R.drawable.ic_launcher_foreground)
                                 .into(avatar);
 
-                        System.out.println("estoy en el for lol");
                         cargarUser();
 
                         i++;
@@ -272,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Cuando se obtienen todos los campeones, debemos avisar al adaptador para informar
                     // de que debe actualizarse
                     //adaptador.notifyDataSetChanged();
-                    Log.d("DEB", "he ssalido del array lol");
+                    Log.d("mio", "salgo del on post en Profile");
                 }
             }
             catch (JSONException e){
@@ -283,6 +144,141 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+
+
+
+    //GetOwnedGames
+    private class taskGetGames extends AsyncTask<String, Void, String> {
+        ArrayList<Game> listaGames = new ArrayList<>();
+        String numero ="";
+        private String appid;
+        private String name;
+        private String playtime_forever;
+        private String img_icon_url;
+        private String img_logo_url;
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Log.d("mio","entro en taskedGames");
+            String resultado = "";
+            switch (strings[0]) {
+                case "GET":
+                    resultado = conexion.cargarJuegos(getUseractual());
+                    break;
+                case "POST":
+                    resultado = Integer.toString(conexion.postGamesOwned(strings[1],strings[2]));
+                    break;
+                //ver el post execute que he borrao
+            }
+
+            return resultado;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                if (!s.isEmpty()){
+                    Log.d("D", "se cargan datos de los juegos"+s);
+                    JSONObject respuesta = new JSONObject(s);
+                    JSONObject objeto1 = respuesta.getJSONObject("response");
+                    JSONArray ArrayDeJuegos;
+                    ArrayDeJuegos = objeto1.getJSONArray("game");
+                    //Pido perdon por el caos pero es que me he estado riendo un buen rato intentanto hacer que esto funcionara y ha sido de puta chiripa lol
+                    Iterator iterador = objeto1.keys();
+                    numero ="";
+
+                    System.out.println(ArrayDeJuegos.length());
+                    while (iterador.hasNext()){
+
+                        String llave = (String) iterador.next();
+                        Log.d(" mio","llave: "+ llave);
+                        numero =   objeto1.getString("game_count");
+
+                        for(int i=0; i<ArrayDeJuegos.length();i++){
+                            //reccorro mi array de juegos
+                            JSONObject miobjeto = ArrayDeJuegos.getJSONObject(i);
+                        for(int j=0; j<miobjeto.length() ;j++){
+                         appid = (String) miobjeto.getString("appid");
+                         name = (String) miobjeto.getString("name");
+                         playtime_forever =  miobjeto.getString("playtime_forever");
+                         img_icon_url = (String)miobjeto.getString("img_icon_url");
+                         img_logo_url = miobjeto.getString("img_logo_url");
+                        //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
+                        //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
+
+                        miJuego = new Game(appid,name,playtime_forever,img_icon_url,img_logo_url);
+
+                         listaGames = new ArrayList<>();
+                        listaGames.add(miJuego);
+
+
+                        i++;
+                    }}}gamesOwned = new GamesOwned(numero,listaGames);
+                    gamesOwned = new GamesOwned(numero,listaGames);
+                    System.out.println("EA"+gamesOwned.getNumerosdejuegos());
+                    cargarListaJuegos();
+
+
+                    //Cuando se obtienen todos los campeones, debemos avisar al adaptador para informar
+                    // de que debe actualizarse
+                    //adaptador.notifyDataSetChanged();
+                    Log.d("mio", "salgo del array Array Juegos");
+                }
+            }
+            catch (JSONException e){
+                System.out.println("hola soy el error"+e);
+            }
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+    //metodos del async
+    public void cargarUser(){
+        Log.d("mio","metodo para cargar los usuarios en la vista ");
+        user.setText(usuario.getPersonaname());
+        state.setText(usuario.getPersonastate());
+        realname.setText(usuario.getRealname());
+        steamid.setText(usuario.getSteamid());
+
+    }
+
+    public void cargarListaJuegos(){
+    listaJuegos = findViewById(R.id.rListaVideojuegos);
+    adaptador = new Adaptador(gamesOwned,this); //cargo el adaptador con el objeto
+    listaJuegos.setAdapter(adaptador);
+    GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
+    listaJuegos.setLayoutManager(gridLayoutManager);
+
+
+
+
+    }
+
+    //metodo del mainactivity para inicializar los componetes
+    public void initComponents(){
+        gamesOwned = new GamesOwned();
+        usuario = new PlayerSummaries();
+        avatar = findViewById(R.id.userphoto);
+        user = findViewById(R.id.user);
+        steamid = findViewById(R.id.steamid);
+        realname = findViewById(R.id.realname);
+        state = findViewById(R.id.state);
+    }
+
+
+
+
 
 
 

@@ -14,7 +14,7 @@ public class HttpSteam {
 
     public String cargarUsuarioBase(String clave){
         Constantes c = new Constantes(clave);
-        Log.d("mio"," Clase HTTP STEAM comenzamos a cargar los usuarios");
+        Log.d("mio"," metodo para cargar los usuarios"+c.getGetPlayerSummaries());
             HttpURLConnection http = null;
                 String content = null;
                 try {
@@ -96,12 +96,13 @@ public class HttpSteam {
 
     public String cargarJuegos(String clave) {
         Constantes c = new Constantes(clave);
-        Log.d("mio"," Clase HTTP STEAM comenzamos a cargar los usuarios");
+        Log.d("mio","método cargar juegos");
         HttpURLConnection http = null;
         String content = null;
         try {
             //formaremos la url juntando la url más el endpoint.
             // Así como la cabecera, que permitira decidir la codificación de los datos que se están trasmitiendo.
+            Log.d("mio","url de la api para los videojuegos "+c.getGetOwnedGames());
             URL url = new URL( c.getGetOwnedGames());
             http = (HttpURLConnection)url.openConnection();
             http.setRequestProperty("Content-Type", "application/json");

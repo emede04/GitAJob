@@ -28,11 +28,12 @@ public class Constantes {
         GetPlayerSummaries = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + STEAM_KEY + "&steamids=" + idpasada;
         getNewsForApp = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=" + codigovideojuego + "&count=3&maxlength=300&format=json";
         GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";
-        GetFriendList = ": http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&relationship=friend";
+        GetFriendList = "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&relationship=friend";
         GetPlayerSummaries = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + STEAM_KEY + "&steamids=" + idpasada;
         GetPlayerAchievements = " http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
         GetUserStatsForGame = " http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
-        GetOwnedGames = ": http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + STEAM_KEY +"&include_appinfo=true&steamid=" + idpasada + "&format=json";
+        GetOwnedGames = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+STEAM_KEY+"&include_appinfo=true&steamid="+idpasada;
+        //lo cambiare luego, peor por ahora esta la api de un amigo mio que sé que no se va a poner en privado lol
         GetRecentlyPlayedGames = " http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&format=json";
 
 
