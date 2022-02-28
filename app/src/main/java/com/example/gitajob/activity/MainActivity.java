@@ -121,13 +121,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         usuario = new PlayerSummaries(steamid, communityvisibilitystate, personaname, avatarfull, realname);
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-
                     }
                     //Cuando se obtienen todos los campeones, debemos avisar al adaptador para informar
                     // de que debe actualizarse
-                    //adaptador.notifyDataSetChanged();
-                    Log.d("mio", "salgo del on post en Profile");
+                    //
                     cargarUser();
+                    Log.d("mio", "salgo del on post en Profile");
                 }
 
             } catch (JSONException e) {
@@ -137,6 +136,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+
+
+
 
 
     //GetOwnedGames
@@ -206,7 +209,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);
 
 
-
                         listaGames.add(miJuego);
                     }
                 }
@@ -232,10 +234,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //metodos del async
     public void cargarUser() {
         Log.d("mio", "metodo para cargar los usuarios en la vista ");
-        user.setText(usuario.getPersonaname());
-        state.setText(usuario.getPersonastate());
-        realname.setText(usuario.getRealname());
-        steamid.setText(usuario.getSteamid());
+
+        if(usuario.getRealname().isEmpty()){
+            user.setText(usuario.getPersonastate());
+            state.setText(usuario.getLoccityid());
+            realname.setText(usuario.getPersonaname());
+            steamid.setText(usuario.getSteamid());
+
+        }else{
+            user.setText(usuario.getPersonaname());
+            state.setText(usuario.getPersonastate());
+            realname.setText(usuario.getRealname());
+            steamid.setText(usuario.getSteamid());
+        }
+
+
 
     }
 

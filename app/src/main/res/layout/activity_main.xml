@@ -10,22 +10,25 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="399dp"
-        android:layout_height="272dp"
+        android:layout_width="398dp"
+        android:layout_height="240dp"
         android:layout_marginEnd="1dp"
         android:elevation="10dp"
-        app:cardBackgroundColor="@android:color/transparent"
 
+        app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="10dp"
         app:cardElevation="7dp"
-        app:layout_constraintBottom_toTopOf="@+id/rListaVideojuegos"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="272dp">
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@android:color/transparent"
+
+            >
 
             <TextView
                 android:id="@+id/user"
@@ -35,7 +38,7 @@
                 android:layout_marginBottom="43dp"
                 android:text="TextView"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/userphoto"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -61,7 +64,7 @@
                 android:layout_marginStart="43dp"
                 android:text="TextView"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -76,7 +79,7 @@
                 android:layout_marginEnd="76dp"
                 android:text="TextView"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -89,7 +92,7 @@
                 android:layout_height="36dp"
                 android:text="TextView"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/realname"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -165,13 +168,35 @@
             app:tint="@color/white" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rListaVideojuegos"
-        android:layout_width="406dp"
-        android:layout_height="395dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="1dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="391dp"
+        android:layout_height="415dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@android:color/transparent"
+
         app:layout_constraintBottom_toTopOf="@+id/bMenu"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rListaVideojuegos"
+            android:layout_width="382dp"
+            android:layout_height="396dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/bMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
