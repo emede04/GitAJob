@@ -1,5 +1,18 @@
 package com.example.gitajob.modelos;
 
+
+
+    /*
+    *  Peculiaridades de getPlayerSummaries,
+    *       - dependiendo del las opciones de privacidad devuelverá más o menos datos
+    *       - dependiendo de la informacion que ha rellenado el usuario devolverá más o menos datos
+    *
+    *
+    *       --> hacer varios constructores y comprobar en el get el valor de los datos.
+    *
+    * */
+
+
 public class PlayerSummaries {
     String steamid;
     String communityvisibilitystate;
@@ -18,31 +31,34 @@ public class PlayerSummaries {
     String loccountrycode;
     String locstatecode;
     String loccityid;
+    String lastlogoff;
 
 
 
 
-    PlayerSummaries(String steamid, String communityvisibilitystate, String avatarmedium, String personaname, String profileurl, String avatarfull, String personastate, String realname, String primaryclanid, String timecreated, String personastateflags, String loccountrycode, String locstatecode, String loccityid) {
-        this.steamid = steamid;
-        this.communityvisibilitystate = communityvisibilitystate;
-        this.personaname = personaname;
-        this.profileurl = profileurl;
-        this.avatarfull = avatarfull;
-        this.avatarmedium =
-        this.personastate = personastate;
-        this.realname = realname;
-        this.primaryclanid = primaryclanid;
-        this.timecreated = timecreated;
-        this.personastateflags = personastateflags;
-        this.loccountrycode = loccountrycode;
-        this.locstatecode = locstatecode;
-        this.loccityid = loccityid;
+
+
+
+
+
+    //constructor bacio
+
+    public PlayerSummaries() {
+
     }
 
 
+    //Construcutor de usuario basico
 
-
-    public PlayerSummaries(String steamid, String communityvisibilitystate, String profilestate, String personaname, String profileurl, String avatar, String avatarmedium, String avatarfull, String avatarhash, String personastate, String realname, String primaryclanid, String timecreated, String personastateflags, String loccountrycode, String locstatecode, String loccityid) {
+    public PlayerSummaries(String steamid, String communityvisibilitystate, String personaname, String avatarmedium, String realname) {
+        this.steamid = steamid;
+        this.communityvisibilitystate = communityvisibilitystate;
+        this.personaname = personaname;
+        this.avatarmedium = avatarmedium;
+        this.realname = realname;
+    }
+        //Constructor para usuario como Linkeriyo
+    public PlayerSummaries(String steamid, String communityvisibilitystate, String profilestate, String personaname, String profileurl, String avatar, String avatarmedium, String avatarfull, String avatarhash, String personastate, String primaryclanid, String timecreated, String personastateflags, String lastlogoff) {
         this.steamid = steamid;
         this.communityvisibilitystate = communityvisibilitystate;
         this.profilestate = profilestate;
@@ -53,26 +69,12 @@ public class PlayerSummaries {
         this.avatarfull = avatarfull;
         this.avatarhash = avatarhash;
         this.personastate = personastate;
-        this.realname = realname;
         this.primaryclanid = primaryclanid;
         this.timecreated = timecreated;
         this.personastateflags = personastateflags;
-        this.loccountrycode = loccountrycode;
-        this.locstatecode = locstatecode;
-        this.loccityid = loccityid;
+        this.lastlogoff = lastlogoff;
     }
 
-    public PlayerSummaries() {
-
-    }
-
-    public PlayerSummaries(String steamid, String communityvisibilitystate, String personaname, String avatarmedium, String realname) {
-        this.steamid = steamid;
-        this.communityvisibilitystate = communityvisibilitystate;
-        this.personaname = personaname;
-        this.avatarmedium = avatarmedium;
-        this.realname = realname;
-    }
 
     public String getSteamid() {
         return steamid;

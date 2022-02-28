@@ -6,7 +6,7 @@ public class GamesOwned {
     String numerosdejuegos;
   ArrayList<Game> ListaDeVideojuegos;
 
-    //constructor GETOWNEDGAMES
+    //constructor GETOWNEDGAMES //
     public GamesOwned(String numerosdejuegos, ArrayList<Game> listaDeVideojuegos) {
         this.numerosdejuegos = numerosdejuegos;
         ListaDeVideojuegos = listaDeVideojuegos;
