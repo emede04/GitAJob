@@ -40,7 +40,6 @@ import java.util.ArrayList;
 
 public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> implements View.OnClickListener{
     ArrayList<Game> listaJuegos;
-     String url_a_cargar;
     private Activity activity;
     public Adaptador(GamesOwned g, Activity activity){
         this.listaJuegos = g.getListaDeVideojuegos();
@@ -76,7 +75,6 @@ public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> i
             Glide
                     .with(activity)
                     .load(myUri)
-                    .fitCenter()
                     .into(holder.IconoJuego);
 
             System.out.println(myUri.toString());

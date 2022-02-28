@@ -2,14 +2,13 @@ package com.example.gitajob.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +19,6 @@ import com.example.gitajob.io.HttpSteam;
 import com.example.gitajob.modelos.Game;
 import com.example.gitajob.modelos.GamesOwned;
 import com.example.gitajob.modelos.PlayerSummaries;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,13 +42,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public RecyclerView listaJuegos;
     public Adaptador adaptador;
     public Game miJuego;
+    private Game miJuego2;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // inicio mis componentes
         initComponents();
+        //paso la clave de steam que el usuario introducio en la activity anterior
         useractual = getIntent().getExtras().getString("clave de steam");
 
         new taskPlayerSummaries().execute("GET","");
@@ -60,8 +61,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        view.getId();
+        switch (view.getId()/*to get clicked view id**/) {
+            case R.id.rListaVideojuegos:
+                Intent i = new Intent(this, JuegosInfo.class);
+                i.putExtra("id",gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getAppid());
+                i.putExtra("nombre",gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getName());
+                //;   i.putExtra("titulo",gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getPlaytime_forever()//;
+                //;    i.putExtra("lore",gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getPlaytime_forever();
+                startActivity(i);
+                break;
+            case R.id.userphoto:
+
+            default:
+                break;
+        }
     }
+
+
 
     //paso los datos de mi mainactivtiy a async task
     public String getUseractual() {
@@ -203,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected void onPostExecute(String s) {
             try {  if (!s.isEmpty()) {
-                Log.d("D", "se cargan datos de los juegos comprobao");
+                Log.d("D", "se cargan datos de los juegos comprobao" + s);
                 JSONObject respuesta = new JSONObject(s);
                 JSONObject objeto1 = respuesta.getJSONObject("response");
                 JSONArray ArrayDeJuegos;
@@ -230,10 +246,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     img_logo_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_logo_url").toString();
                     //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                     //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-                    miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);
-
-
-                    listaGames.add(miJuego);
+                    miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);                    listaGames.add(miJuego);
                 }
             }
                 gamesOwned = new GamesOwned(numero, listaGames);
@@ -286,10 +299,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         steamid = findViewById(R.id.steamid);
         realname = findViewById(R.id.realname);
         state = findViewById(R.id.state);
-    }
-
-    public void cargarDatos() throws InterruptedException {
-
 
 
 

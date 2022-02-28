@@ -81,8 +81,8 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
             http = (HttpURLConnection) url.openConnection();
             http.setRequestMethod("GET");
 
-          if (http.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
-                Log.d("mio","datos de steam :ea error las aplicacion correcta");
+          if (http.getResponseCode() == HttpURLConnection.HTTP_BAD_GATEWAY) {
+                Log.d("mio","datos de steam :ea F");
               AlertDialog.Builder builder = new AlertDialog.Builder(this);
               builder.setMessage("Esa id de steam no existe")
                       .setTitle("Error")
@@ -100,7 +100,6 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
         } catch (Exception ex) {
 
             System.out.println("ni ha entrado tu");
-            System.out.println("error :"+ex);
             System.out.println("error :"+ex);
             return false;
 
