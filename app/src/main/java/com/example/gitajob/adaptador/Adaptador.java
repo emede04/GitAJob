@@ -50,9 +50,7 @@ public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> i
         Game juego = listaJuegos.get(position);
         holder.horastotales.setText(juego.getPlaytime_forever());
         holder.nombreJuego.setText(juego.getName());
-        Glide.with(activity)
-                .load(juego.getImg_icon_url())
-                .into(holder.IconoJuego);
+
     }
 
     @Override

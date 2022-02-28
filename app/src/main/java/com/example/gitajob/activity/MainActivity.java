@@ -31,7 +31,6 @@ import java.util.Iterator;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     String useractual ="";   //saco y hago accesible la iddesteam para los metodos.
     HttpSteam conexion = new HttpSteam();  //creo mi conexion
-    //declaro las variable
     PlayerSummaries usuario;
     ImageView avatar;
     TextView user;
@@ -192,15 +191,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                     System.out.println(ArrayDeJuegos.length());
-                    while (iterador.hasNext()){
+                    while (iterador.hasNext()) {
 
                         String llave = (String) iterador.next();
-                        Log.d(" mio","llave: "+ llave);
-                        numero =   objeto1.getString("game_count");
+                        Log.d(" mio", "llave: " + llave);
+                        numero = objeto1.getString("game_count");
+                    }
+
+                    for(int i=0; i<ArrayDeJuegos.length();i++){
+                        //reccorro mi array de juegos
+
+                            appid =  ArrayDeJuegos.getJSONObject(i).get("appid").toString();
+                            name = (String) ArrayDeJuegos.getJSONObject(i).get("name");
+                            playtime_forever =(String)  ArrayDeJuegos.getJSONObject(i).get("playtime_forever").toString();
+                            img_icon_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_icon_url").toString();
+                            img_logo_url =(String) ArrayDeJuegos.getJSONObject(i).get("img_logo_url").toString();
+                            //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
+                            //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
+
+                            miJuego = new Game(appid,name,playtime_forever,img_icon_url,img_logo_url);
+                            listaGames.add(miJuego);
+                        }}
+                gamesOwned = new GamesOwned(numero,listaGames);
+                cargarListaJuegos();
+
+
+                //Cuando se obtienen todos los campeones, debemos avisar al adaptador para informar
+                // de que debe actualizarse
+                //adaptador.notifyDataSetChanged();
+                Log.d("mio", "salgo del array Array Juegos");
+
+            }
+            catch (JSONException e){
+                System.out.println("hola soy el error"+e);
+            }
+        }
+
+
+        /*
+            try {
+                if (!s.isEmpty()){
+                    Log.d("D", "se cargan datos de los juegos"+s);
+                    JSONObject respuesta = new JSONObject(s);
+                    JSONObject objeto1 = respuesta.getJSONObject("response");
+                    JSONArray ArrayDeJuegos;
+                    ArrayDeJuegos = objeto1.getJSONArray("games");
+                    //Pido perdon por el caos pero es que me he estado riendo un buen rato intentanto hacer que esto funcionara y ha sido de puta chiripa lol
+                    Iterator iterador = objeto1.keys();
+                    numero ="";
+
+
+
+                    System.out.println(ArrayDeJuegos.length());
+                    while (iterador.hasNext()) {
+
+                        String llave = (String) iterador.next();
+                        Log.d(" mio", "llave: " + llave);
+                        numero = objeto1.getString("game_count");
+                    }
 
                         for(int i=0; i<ArrayDeJuegos.length();i++){
                             //reccorro mi array de juegos
-                            JSONObject miobjeto = ArrayDeJuegos.getJSONObject(i);
+                        JSONObject miobjeto = ArrayDeJuegos.getJSONObject(i);
                         for(int j=0; j<miobjeto.length() ;j++){
                          appid = (String) miobjeto.getString("appid");
                          name = (String) miobjeto.getString("name");
@@ -216,8 +268,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         i++;
                     }}}gamesOwned = new GamesOwned(numero,listaGames);
-                    gamesOwned = new GamesOwned(numero,listaGames);
-                    System.out.println("EA"+gamesOwned.getNumerosdejuegos());
                     cargarListaJuegos();
 
 
@@ -225,12 +275,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // de que debe actualizarse
                     //adaptador.notifyDataSetChanged();
                     Log.d("mio", "salgo del array Array Juegos");
-                }
+
             }
             catch (JSONException e){
                 System.out.println("hola soy el error"+e);
             }
         }
+        */
 
 
 
