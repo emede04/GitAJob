@@ -111,24 +111,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         arraydemiuser = objeto2;
                     }
 
-                    //  api compuesta por un objeto con un array de objetos dentro, por lo que necesitamos
+                        //TODO hacer algo con la excepcion
+                        //TODO el click
+                        //TODO Hacerlo bonito que es mas feo que pegarle a un padre
+                        /*vale esto funciona, problema, que depende de user que me pases,
+                        //el json que me devuelve la api es directe entonces tengo que arreglar
+                        //que sin importar la url mi objeto funcione de forma correcta
+                        //por ahora asi a lo groso es que si dectecto que mi string no tiene el atributo que luego
+                        //le voy a pedir por aqui que me cambie el tag que busco por uno similar*/
+
                     for(int i=0; i<1;i++){
                         String steamid = arraydemiuser.getJSONObject(i).getString("steamid");
                         String communityvisibilitystate = arraydemiuser.getJSONObject(i).getString("communityvisibilitystate");
                         String personaname = arraydemiuser.getJSONObject(i).getString("personaname");
                         String avatarfull = arraydemiuser.getJSONObject(i).getString("avatarfull");
                         String realname = arraydemiuser.getJSONObject(i).getString("realname");
-                        System.out.println(avatarfull);
-                        usuario = new PlayerSummaries(steamid,communityvisibilitystate,personaname,avatarfull,realname);
-                        //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
-                        //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-                        Glide.with(MainActivity.this)
-                                //esto es una biblioteca donde subir icones svg
-                                .load(avatarfull).fitCenter()
-                                .error(R.drawable.ic_launcher_foreground)
-                                .into(avatar);
+                        Log.d("mio", "illo que pasa con real name de los cojones"+realname);
+                        if(realname==null){
+                            realname ="Sin Nombre";
+                            usuario = new PlayerSummaries(steamid,communityvisibilitystate,personaname,avatarfull,realname);
+                            Glide.with(MainActivity.this)
+                                    //esto es una biblioteca donde subir icones svg
+                                    .load(avatarfull).fitCenter()
+                                    .error(R.drawable.ic_launcher_foreground)
+                                    .into(avatar);
+                            cargarUser();
 
-                        cargarUser();
+                        }else {
+                            usuario = new PlayerSummaries(steamid, communityvisibilitystate, personaname, avatarfull, realname);
+                            //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
+                            //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
+                            Glide.with(MainActivity.this)
+                                    //esto es una biblioteca donde subir icones svg
+                                    .load(avatarfull).fitCenter()
+                                    .error(R.drawable.ic_launcher_foreground)
+                                    .into(avatar);
+                            cargarUser();
+
+                        }
 
 
                     }
@@ -183,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected void onPostExecute(String s) {
             try {  if (!s.isEmpty()) {
-                Log.d("D", "se cargan datos de los juegos" + s);
+                Log.d("D", "se cargan datos de los juegos comprobao");
                 JSONObject respuesta = new JSONObject(s);
                 JSONObject objeto1 = respuesta.getJSONObject("response");
                 JSONArray ArrayDeJuegos;
@@ -197,7 +217,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 while (iterador.hasNext()) {
 
                     String llave = (String) iterador.next();
-                    Log.d(" mio", "llave: " + llave);
                     numero = objeto1.getString("game_count");
                 }
 
@@ -211,10 +230,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     img_logo_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_logo_url").toString();
                     //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                     //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-
-
-                    String url_a_cargar = " http://media.steampowered.com/steamcommunity/public/images/apps/" + appid + "/" + img_logo_url + ".jpg.";
-
                     miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);
 
 
@@ -229,11 +244,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Cuando se obtienen todos los campeones, debemos avisar al adaptador para informar
                 // de que debe actualizarse
                 //adaptador.notifyDataSetChanged();
-                Log.d("mio", "salgo del array Array Juegos");
+                Log.d("mio", "salgo del post de games sin petar :D");
 
             }
             catch (JSONException e) {
-                System.out.println("hola soy el error " +  e);
+                Log.d("mio", "error en taskgetGames");
             }
         }
 

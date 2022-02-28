@@ -13,8 +13,9 @@
         Asi aqui se viene una pequeña explicacion, para usar los datos de la api, necesito que tú, introduzcas tu id de steam , en el caso que no tengas escribe simplemente
         el textHint y podras acceder a la funcionalidad de la app
     </string>
+    <string name="idkike">76561198145225968</string>
     <string name="verifica">Verifica</string>
-    <string name="id_default">76561198145225968</string>
-    <string name="linke">76561197960434622</string>
+    <string name="id_default">76561197961491680</string>
+    <string name="untioraro">76561197960434622</string>
     <string name="path_search">M15.5 14l-0.79 0 -0.28 -0.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3 5.91 3 3 5.91 3 9.5 3 13.09 5.91 16 9.5 16c1.61 0 3.09 -0.59 4.23 -1.57L14 14.71 14 15.5 19 20.49 20.49 19 15.5 14Zm-6 0C7.01 14 5 11.99 5 9.5 5 7.01 7.01 5 9.5 5 11.99 5 14 7.01 14 9.5 14 11.99 11.99 14 9.5 14Z</string>
 </resources>
