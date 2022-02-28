@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> implements View.OnClickListener{
     ArrayList<Game> listaJuegos;
+     String url_a_cargar;
     private Activity activity;
     public Adaptador(GamesOwned g, Activity activity){
         this.listaJuegos = g.getListaDeVideojuegos();
@@ -64,18 +65,6 @@ public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> i
         holder.horastotales.setText(juego.getPlaytime_forever());
         holder.nombreJuego.setText(juego.getName());
 
-            String id = listaJuegos.get(position).getAppid();
-            String hash = listaJuegos.get(position).getImg_logo_url();
-            String url_a_cargar = "http://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/" + hash + ".jpg.";
-
-                
-                Picasso.get()
-                        .load("https://cdn4.iconfinder.com/data/icons/bubble-gradient-social-media-1/200/steam-512.png")
-                        .into(holder.IconoJuego);
-                System.out.println(url_a_cargar);
-
-            //picasso no me carga las fotos por que es malo o algo quillo
-
 
 
      }
@@ -97,7 +86,22 @@ public class Adaptador extends  RecyclerView.Adapter<Adaptador.RecyclerHolder> i
             IconoJuego = itemView.findViewById(id.iconoVideojuego);
             nombreJuego = itemView.findViewById(id.nombre);
             horastotales = itemView.findViewById(id.horastotales);
+            for(int i=0;i<listaJuegos.size();i++) {
 
+                String id = listaJuegos.get(i).getAppid();
+                String hash = listaJuegos.get(i).getImg_logo_url();
+                 url_a_cargar = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/" + hash + ".jpg.";
+                Glide.with(activity)
+                        .load(url_a_cargar)
+
+                        .placeholder(drawable.ic_settings)
+                        .timeout(6000)
+                        .into(IconoJuego);
+
+                System.out.println(url_a_cargar);
+
+                //picasso no me carga las fotos por que es malo o algo quillo
+            }
 
         }
     }}
