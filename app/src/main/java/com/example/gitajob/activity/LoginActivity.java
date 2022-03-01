@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.gitajob.R;
 import com.example.gitajob.basededatos.Db_Master;
+import com.example.gitajob.steamdata.DatosDeSteam;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     EditText user;

@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("nombre", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getName());
                 i.putExtra("icono", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getImg_logo_url());
                 i.putExtra("horas", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getPlaytime_forever());
-
+                System.out.println("probando a ver si la pasa info o no"+gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getImg_logo_url());
                 //;    i.putExtra("lore",gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getPlaytime_forever();
                 startActivity(i);
             }

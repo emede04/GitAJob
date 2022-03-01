@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".activity.JuegosInfo">
 
 
@@ -27,11 +28,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"><![CDATA[>
+            android:layout_height="160dp">
 
 
-
-            ]]>
 
             <TextView
                 android:id="@+id/nombre"

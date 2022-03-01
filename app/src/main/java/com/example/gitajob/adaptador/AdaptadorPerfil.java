@@ -2,6 +2,7 @@ package com.example.gitajob.adaptador;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,11 +63,10 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
                     .with(activity)
                     .load(myUri)
                     .into(holder.IconoJuego);
-
-            System.out.println(myUri.toString());
+            //truquito del adaptador jej
+        Log.d("mio","aqui reescribo la informacion de mi objeto con mi url formada dependiendo de el id, y el hash obtenido de la api");
+            juego.setImg_logo_url(carga);
         }
-
-
 
 
 

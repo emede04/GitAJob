@@ -3,6 +3,7 @@ package com.example.gitajob.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,6 +59,24 @@ public class JuegosInfo extends AppCompatActivity {
 
         return id;
     }
+
+    private class taskGameNews extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
+    }
+
+    private class taskGetGlobalAchivement extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
+    }
+
+
 
 
 }
