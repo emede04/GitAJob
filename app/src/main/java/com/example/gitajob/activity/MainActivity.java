@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     TextView steamid;
     TextView state;
     TextView realname;
-
+    Menu menu;
     GamesOwned gamesOwned;
     RecyclerView.LayoutManager modelo;
     public RecyclerView listaJuegos;
@@ -56,10 +59,16 @@ public class MainActivity extends AppCompatActivity {
 
         new taskPlayerSummaries().execute("GET", "");
         new taskGetGames().execute("GET", "");
-
+        loadPreferences();
 
      }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Se usa un inflater para construir la vista y se pasa el menu por defecto para
+        // que Android se encargue de colocarlo en la vista
+        getMenuInflater().inflate(R.menu.menu_simple,menu);
 
+        return true;
+    }
 
 
     //paso los datos de mi mainactivtiy a async task
@@ -297,6 +306,20 @@ public class MainActivity extends AppCompatActivity {
         state = findViewById(R.id.state);
 
 
+    }
+    public void loadPreferences(){
+
+        //Todo 4. Una vez creado todo, solo debemos de preocuparnos de acceder a la información,
+        // ya  que Android se encarga del almacenamiento de los datos que introduce el usuario en
+        // la ventana de preferencias.
+
+        //Todo 4.1 Utilizamos PreferenceManager para obtener las preferencias compartidas de nuestra
+        // aplicación. TENEIS QUE TENER EN CUENTA QUE ESTE ES EL MISMO PARA TODA LA APP (PATRÓN SINGLETON)
+
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String nombreUsuario = sharedPreferences.getString("nombre_usuario","Usuario");
+        Toast.makeText(this, "¡Hola "+nombreUsuario+"!", Toast.LENGTH_SHORT).show();
     }
 
 
