@@ -5,7 +5,7 @@ package com.example.gitajob.steamdata;
 
 
 public class Constantes {
-    private String codigovideojuego = "";
+    private String codigovideojuego;
     private String idpasada;
     private static final String STEAM_KEY = "3A14C27710748C26952CA27A940F45CA";
     private static final String STEAM_PROFILE_URL_START = "https://steamcommunity.com/profiles/";
@@ -26,12 +26,8 @@ public class Constantes {
         this.idpasada = idpasada;
         //inicializo mis variables con el construcos
         GetPlayerSummaries = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + STEAM_KEY + "&steamids=" + idpasada;
-        getNewsForApp = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=" + codigovideojuego + "&count=3&maxlength=300&format=json";
-        GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";
         GetFriendList = "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&relationship=friend";
         GetPlayerSummaries = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + STEAM_KEY + "&steamids=" + idpasada;
-        GetPlayerAchievements = " http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
-        GetUserStatsForGame = " http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
         GetOwnedGames = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+STEAM_KEY+"&include_appinfo=true&steamid="+idpasada;
         //lo cambiare luego, peor por ahora esta la api de un amigo mio que sé que no se va a poner en privado lol
         GetRecentlyPlayedGames = " http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + STEAM_KEY + "&steamid=" + idpasada + "&format=json";
@@ -42,8 +38,13 @@ public class Constantes {
 
     public Constantes(String idpasada, String codigovideojuego) {
         this.idpasada = idpasada;
+
         this.codigovideojuego = codigovideojuego;
+        getNewsForApp = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=" + codigovideojuego + "&count=3&maxlength=300&format=json";
         GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";
+        GetPlayerAchievements = " http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
+        GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";
+        GetUserStatsForGame = " http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
 
     }
 

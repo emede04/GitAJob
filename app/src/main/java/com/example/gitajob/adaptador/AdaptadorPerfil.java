@@ -57,15 +57,15 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
 
             String id = juego.getAppid();
             String hash = juego.getImg_logo_url();
-            String carga  = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/"+hash+".jpg";
-            Uri myUri = Uri.parse(carga);
+            String carga  = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/"+hash;
+            Uri myUri = Uri.parse(carga+".jpg");
             Glide
                     .with(activity)
                     .load(myUri)
                     .into(holder.IconoJuego);
             //truquito del adaptador jej
         Log.d("mio","aqui reescribo la informacion de mi objeto con mi url formada dependiendo de el id, y el hash obtenido de la api");
-            juego.setImg_logo_url(carga);
+            juego.setImg_logo_url(carga+".jpg");
         }
 
 

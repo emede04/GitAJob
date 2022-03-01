@@ -12,6 +12,8 @@ import java.net.URL;
 
 public class HttpSteam {
 
+
+    //metodos usuarios
     public String cargarUsuarioBase(String clave){
         Constantes c = new Constantes(clave);
         Log.d("mio"," metodo para cargar los usuarios"+c.getGetPlayerSummaries());
@@ -87,12 +89,86 @@ public class HttpSteam {
 
 
     //TODO -Pues eso veras las risas mañana
+    //ES MAÑANNAAAA
+    //metodos noticas
+    public String cargarNoticias(String clave, String idjuego) {
+        Constantes c = new Constantes(clave,idjuego);
+        Log.d("mio","método cargar juegos");
+        HttpURLConnection http = null;
+        String content = null;
+        try {
+            //formaremos la url juntando la url más el endpoint.
+            // Así como la cabecera, que permitira decidir la codificación de los datos que se están trasmitiendo.
+            Log.d("mio","url de la api para los videojuegos "+c.getGetNewsForApp());
+            System.out.println(c.getGetNewsForApp());
+            URL url = new URL( c.getGetNewsForApp());
+            http = (HttpURLConnection)url.openConnection();
+            http.setRequestProperty("Content-Type", "application/json");
+            http.setRequestProperty("Accept", "application/json");
 
-    public String cargarNoticias(String clave) {
+            //Si el servidor devuelve un codigo 200 (HTTP_OK == 200),la informacion que devuelva sabremos que es correcta.
+            if( http.getResponseCode() == HttpURLConnection.HTTP_OK ) {
+                //Se codifica el texto de la respuesta como String.
+                StringBuilder sb = new StringBuilder();
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader( http.getInputStream() ));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                content = sb.toString();
+                reader.close();
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        finally {
 
-        return clave;
+            //Se desconecta la conexión.
+            if( http != null ) http.disconnect();
+        }
+        return content;
     }
 
+    public int postGetNews(String clave, String datos){
+        Constantes c = new Constantes(clave);
+        HttpURLConnection http = null;
+        int respuestaCodigo = -1;
+        try{
+            // Creamos la URL con el valor pasado por parametro (champ)
+            URL url = new URL(c.getGetNewsForApp());
+            // Abrimos la conexion con la API
+            http = (HttpURLConnection)url.openConnection();
+            // Establecemos el modo de conexion, en este caso, POST
+            http.setRequestMethod("POST");
+            http.setRequestProperty("Content-Type","application/json");
+            http.setRequestProperty("Accept","application/json");
+            http.setDoOutput(true);
+
+            // Creamos el escritor, para mostrar los datos por pantalla
+            PrintWriter escritor = new PrintWriter(http.getOutputStream());
+            // Escribo los datos leidos en el layout
+            escritor.print(datos);
+            escritor.flush();
+            // Comprobamos si los datos han sido leidos correctamente
+            respuestaCodigo = http.getResponseCode();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            if (http != null){
+                http.disconnect();
+            }
+        }
+        return respuestaCodigo;
+    }
+
+
+
+
+
+
+    //metodos juegos
 
     public String cargarJuegos(String clave) {
         Constantes c = new Constantes(clave);
@@ -132,6 +208,8 @@ public class HttpSteam {
         }
         return content;
     }
+
+
     public static int postGamesOwned(String clave, String datos){
         Constantes c = new Constantes(clave);
         HttpURLConnection http = null;
