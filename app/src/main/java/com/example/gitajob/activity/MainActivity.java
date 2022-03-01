@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     public RecyclerView listaJuegos;
     public AdaptadorPerfil adaptadorPerfil;
     public Game miJuego;
-    private Game miJuego2;
 
     @Override
 
