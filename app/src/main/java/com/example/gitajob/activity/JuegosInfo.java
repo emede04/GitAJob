@@ -1,24 +1,31 @@
 package com.example.gitajob.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.gitajob.R;
+import com.example.gitajob.adaptador.AdaptadorPerfil;
 import com.example.gitajob.io.HttpSteam;
 import com.example.gitajob.modelos.Game;
 import com.example.gitajob.modelos.GamesOwned;
+import com.example.gitajob.modelos.NewsForApp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class JuegosInfo extends AppCompatActivity {
@@ -77,6 +84,12 @@ public class JuegosInfo extends AppCompatActivity {
     }
 
     private class taskgetGameNews extends AsyncTask<String, Void, String>{
+        ArrayList<NewsForApp> listaNoticias = new ArrayList<>();
+        private String titulo;
+        private String url;
+        private String author;
+        private String contenido;
+        private String fecha;
 
 
         @Override
@@ -101,49 +114,42 @@ public class JuegosInfo extends AppCompatActivity {
         protected void onPostExecute(String s) {
             try {
                 if (!s.isEmpty()) {
-                    Log.d("D", "se cargan datos de los juegos comprobao" + s);
+                    Log.d("D", "se cargan las noticias de los juegos comprobao" + s);
                     JSONObject respuesta = new JSONObject(s);
-                    JSONObject objeto1 = respuesta.getJSONObject("response");
+                    JSONObject objeto1 = respuesta.getJSONObject("appnews");
                     JSONArray ArrayDeJuegos;
-                    ArrayDeJuegos = objeto1.getJSONArray("games");
-                    //Pido perdon por el caos pero es que me he estado riendo un buen rato intentanto hacer que esto funcionara y ha sido de puta chiripa lol
-                  /*  Iterator iterador = objeto1.keys();
-                    numero = "";
-
-
-                    System.out.println(ArrayDeJuegos.length());
-                    while (iterador.hasNext()) {
-
-                        String llave = (String) iterador.next();
-                        numero = objeto1.getString("game_count");
-                    }
+                    ArrayDeJuegos = objeto1.getJSONArray("newsitems");
 
                     for (int i = 0; i < ArrayDeJuegos.length(); i++) {
                         //reccorro mi array de juegos
 
-                        appid = ArrayDeJuegos.getJSONObject(i).get("appid").toString();
-                        name = (String) ArrayDeJuegos.getJSONObject(i).get("name");
-                        playtime_forever = (String) ArrayDeJuegos.getJSONObject(i).get("playtime_forever").toString();
-                        img_icon_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_icon_url").toString();
-                        img_logo_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_logo_url").toString();
+                        titulo = (String) ArrayDeJuegos.getJSONObject(i).get("title");
+                        url = (String) ArrayDeJuegos.getJSONObject(i).get("url").toString();
+                        author = (String) ArrayDeJuegos.getJSONObject(i).get("author").toString();
+                        contenido = (String) ArrayDeJuegos.getJSONObject(i).get("contents").toString();
+                        fecha = (String) ArrayDeJuegos.getJSONObject(i).get("date").toString();
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-                        miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);
-                        listaGames.add(miJuego);
+                        NewsForApp noticia = new NewsForApp(titulo,url,author,contenido,fecha);
+                        listaNoticias.add(noticia);
+                        System.out.println(titulo);
                     }
                 }
-                gamesOwned = new GamesOwned(numero, listaGames);
-                cargarListaJuegos();
 
-*/
+
+                //cargarListaJuegos();
+
 
                 //Cuando se obtienen todos los campeones, debemos avisar al adaptadorPerfil para informar
                 // de que debe actualizarse
                 //adaptadorPerfil.notifyDataSetChanged();
                 Log.d("mio", "salgo del post de games sin petar :D");
 
-            } }catch (JSONException e) {
+            }
+
+            catch (JSONException e) {
                 Log.d("mio", "error en getNews");
+                System.out.println(e);
             }
         }
     }
@@ -172,7 +178,17 @@ public class JuegosInfo extends AppCompatActivity {
         this.id = id;
     }
 
+/*
+    public void cargarListaJuegos() {
+        listaJuegos = (RecyclerView) findViewById(R.id.rListaVideojuegos);
+        adaptadorPerfil = new AdaptadorPerfil(gamesOwned, this); //cargo el adaptadorPerfil con el objeto
+        listaJuegos.setAdapter(adaptadorPerfil);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
+        listaJuegos.setLayoutManager(gridLayoutManager);
+
+        };
+*/
 
 
+    }
 
-}
