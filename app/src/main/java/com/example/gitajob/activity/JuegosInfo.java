@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.gitajob.R;
+import com.example.gitajob.adaptador.AdapatadorJuegos;
 import com.example.gitajob.adaptador.AdaptadorPerfil;
 import com.example.gitajob.io.HttpSteam;
 import com.example.gitajob.modelos.Game;
@@ -33,6 +34,12 @@ public class JuegosInfo extends AppCompatActivity {
     private ImageView foto;
     private TextView nombre;
     private TextView horasjugadas;
+
+
+    public RecyclerView listaNotcias;
+    public AdapatadorJuegos adaptadorJuegos;
+    public NewsForApp noticias;
+
 
 
 
@@ -130,8 +137,8 @@ public class JuegosInfo extends AppCompatActivity {
                         fecha = (String) ArrayDeJuegos.getJSONObject(i).get("date").toString();
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-                        NewsForApp noticia = new NewsForApp(titulo,url,author,contenido,fecha);
-                        listaNoticias.add(noticia);
+                        noticias = new NewsForApp(titulo,url,author,contenido,fecha);
+                        listaNoticias.add(noticias);
                         System.out.println(titulo);
                     }
                 }
