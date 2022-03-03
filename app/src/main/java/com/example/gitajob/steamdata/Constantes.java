@@ -46,7 +46,7 @@ public class Constantes {
         GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";
         GetUserStatsForGame = " http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
 
-    }a
+    }
 
 
     public String getIdpasada() {

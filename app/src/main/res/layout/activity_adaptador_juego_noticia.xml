@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
-    android:layout_width="wrap_content"
 
-    android:layout_height="243dp">
+    android:layout_height="383dp" android:layout_width="383dp">
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="243dp"
+        android:layout_width="383dp"
+        android:layout_height="383dp"
         android:background="@android:color/transparent"
 
         android:paddingLeft="10dp"
@@ -20,58 +19,63 @@
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="9dp">
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="404dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.107" />
 
-                <TextView
-                    android:id="@+id/titulo"
-                    android:layout_width="375dp"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="24dp"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/contenido2" />
+            <TextView
+                android:id="@+id/autor"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
 
-                <TextView
-                    android:id="@+id/autor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginTop="34dp"
-                    android:layout_marginEnd="322dp"
-                    android:layout_marginBottom="11dp"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/contenido2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="320dp"
+                android:layout_marginBottom="50dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/contenido2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
-                <TextView
-                    android:id="@+id/contenido2"
-                    android:layout_width="114dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginTop="11dp"
-                    android:layout_marginEnd="266dp"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/titulo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autor" />
+            <TextView
+                android:id="@+id/contenido2"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="1dp"
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+                android:layout_marginEnd="266dp"
+                android:layout_marginBottom="16dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.065"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titulo"
+                app:layout_constraintVertical_bias="0.782" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

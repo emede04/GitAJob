@@ -23,12 +23,14 @@
         <entry key="..\:/Users/ordenador/Desktop/GitAJob/app/src/main/res/menu/menu_simple.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_adaptador.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_adaptador_Perfil_Juego.xml" value="0.1625615763546798" />
-        <entry key="app/src/main/res/layout/activity_adaptador_juego_noticia.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_adaptador_perfil_juego.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/activity_adaptador_juego_noticia.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_adaptador_perfil_juego.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_datos_steam.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_full_user.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_juegos_info.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26222826086956524" />
+        <entry key="app/src/main/res/menu/menu_simple.xml" value="0.37604166666666666" />
       </map>
     </option>
   </component>
