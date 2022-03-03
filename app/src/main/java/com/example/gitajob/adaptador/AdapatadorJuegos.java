@@ -14,6 +14,7 @@ import com.example.gitajob.R;
 import com.example.gitajob.modelos.NewsForApp;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeoutException;
 
 public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.RecyclerHolder> implements View.OnClickListener {
     private View.OnClickListener sensor;
@@ -23,6 +24,8 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
 
     public AdapatadorJuegos(ArrayList<NewsForApp> l, Activity activity) {
         this.listanotis = l;
+        System.out.println("tamaño"+ l.size());
+
         this.activity = activity;
 
     }
@@ -37,34 +40,37 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
     @NonNull
     @Override
     public RecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_adaptador, parent, false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_adaptador_juego_noticia, parent, false);
         RecyclerHolder recyclerHolder = new RecyclerHolder(vista);
         vista.setOnClickListener(this);
         return recyclerHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapatadorJuegos.RecyclerHolder recyclerHolder, int i) {
-
+    public void onBindViewHolder(@NonNull RecyclerHolder holder, int i) {
+        NewsForApp n = listanotis.get(i);
+        holder.autor.setText(n.getAuthor());
+        holder.contenido.setText(n.getContenido());
+        holder.titulo.setText(n.getTitulo());;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listanotis.size();
     }
 
     //TODO -FALTA GENERAR ACOMODAR EL RECYCLER
     public class RecyclerHolder extends RecyclerView.ViewHolder {
-        ImageView IconoJuego;
-        TextView nombreJuego;
-        TextView horastotales;
+        TextView autor;
+        TextView titulo;
+        TextView contenido;
 
         public RecyclerHolder(@NonNull View itemView) {
             super(itemView);
 
-            IconoJuego = itemView.findViewById(R.id.iconoVideojuego);
-            nombreJuego = itemView.findViewById(R.id.nombre);
-            horastotales = itemView.findViewById(R.id.horastotales);
+            autor = itemView.findViewById(R.id.autor);
+            titulo = itemView.findViewById(R.id.titulo);
+            contenido = itemView.findViewById(R.id.contenido2);
 
 
         }

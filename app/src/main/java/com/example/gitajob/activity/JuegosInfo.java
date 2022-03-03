@@ -38,8 +38,8 @@ public class JuegosInfo extends AppCompatActivity {
 
     public RecyclerView listaNotcias;
     public AdapatadorJuegos adaptadorJuegos;
-    public NewsForApp noticias;
-
+    public NewsForApp noticias = new NewsForApp();
+    public ArrayList<NewsForApp> aListaNoticias = new ArrayList<>();
 
 
 
@@ -86,7 +86,7 @@ public class JuegosInfo extends AppCompatActivity {
         appid.setText(id);
         setId(id);
         setIdUserActual(iduser);
-
+        ArrayList<NewsForApp> aListaNoticias = new ArrayList<>();
 
     }
 
@@ -127,7 +127,7 @@ public class JuegosInfo extends AppCompatActivity {
                     JSONArray ArrayDeJuegos;
                     ArrayDeJuegos = objeto1.getJSONArray("newsitems");
 
-                    for (int i = 0; i < ArrayDeJuegos.length(); i++) {
+                    for (int i = 0; i <ArrayDeJuegos.length(); i++) {
                         //reccorro mi array de juegos
 
                         titulo = (String) ArrayDeJuegos.getJSONObject(i).get("title");
@@ -138,25 +138,25 @@ public class JuegosInfo extends AppCompatActivity {
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
                         noticias = new NewsForApp(titulo,url,author,contenido,fecha);
-                        listaNoticias.add(noticias);
-                        System.out.println(titulo);
+
+                        aListaNoticias.add(noticias);
                     }
+                    cargarNoticiasJuego();
+
                 }
 
-
-                //cargarListaJuegos();
 
 
                 //Cuando se obtienen todos los campeones, debemos avisar al adaptadorPerfil para informar
                 // de que debe actualizarse
                 //adaptadorPerfil.notifyDataSetChanged();
-                Log.d("mio", "salgo del post de games sin petar :D");
+                Log.d("mio", "salgo del post de games sin petar");
 
             }
 
             catch (JSONException e) {
                 Log.d("mio", "error en getNews");
-                System.out.println(e);
+                System.out.println("ha petado "+e);
             }
         }
     }
@@ -185,16 +185,16 @@ public class JuegosInfo extends AppCompatActivity {
         this.id = id;
     }
 
-/*
-    public void cargarListaJuegos() {
-        listaJuegos = (RecyclerView) findViewById(R.id.rListaVideojuegos);
-        adaptadorPerfil = new AdaptadorPerfil(gamesOwned, this); //cargo el adaptadorPerfil con el objeto
-        listaJuegos.setAdapter(adaptadorPerfil);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
-        listaJuegos.setLayoutManager(gridLayoutManager);
 
-        };
-*/
+    public void cargarNoticiasJuego(){
+
+        listaNotcias = (RecyclerView) findViewById(R.id.rListaNoticias);
+        adaptadorJuegos = new AdapatadorJuegos(aListaNoticias,this);//cargo el adaptador con la lista de los objetos
+        listaNotcias.setAdapter(adaptadorJuegos);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this ,1);
+        listaNotcias.setLayoutManager(gridLayoutManager);
+
+    }
 
 
     }

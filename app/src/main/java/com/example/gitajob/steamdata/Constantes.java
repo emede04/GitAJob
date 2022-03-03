@@ -40,7 +40,7 @@ public class Constantes {
         this.idpasada = idpasada;
 
         this.codigovideojuego = codigovideojuego;
-        getNewsForApp = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=" + codigovideojuego + "&count=3&maxlength=300&format=json";
+        getNewsForApp = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=" + codigovideojuego + "&count=40&maxlength=40&format=json";
         GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";
         GetPlayerAchievements = " http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + codigovideojuego + "&key=" + STEAM_KEY + "&steamid=" + idpasada;
         GetGlobalAchievementPercentagesForApp = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=" + codigovideojuego + "&format=json";

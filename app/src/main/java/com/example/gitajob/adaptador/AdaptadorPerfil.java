@@ -43,7 +43,7 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
     @NonNull
     @Override
     public RecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(layout.activity_adaptador,parent,false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(layout.activity_adaptador_perfil_juego,parent,false);
         RecyclerHolder recyclerHolder = new RecyclerHolder(vista);
         vista.setOnClickListener(this);
         return recyclerHolder;
