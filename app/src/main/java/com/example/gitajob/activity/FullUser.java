@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import com.example.gitajob.R;
 
+
+//por hacer
 public class FullUser extends AppCompatActivity {
 
     @Override

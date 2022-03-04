@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GitAJob"
 include ':app'
+include ':mylibrary'

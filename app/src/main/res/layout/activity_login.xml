@@ -50,22 +50,6 @@
         app:layout_constraintTop_toTopOf="@+id/txtContrasenia"
         app:layout_constraintVertical_bias="1.0" />
 
-    <CheckBox
-        android:id="@+id/checkBoxLogin"
-        android:layout_width="225dp"
-        android:layout_height="47dp"
-
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginBottom="120dp"
-        android:text=" recordar usuario y contraseña"
-        android:textColor="@color/steam_azul_claro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bRegistrar"
-        app:layout_constraintVertical_bias="1.0" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="224dp"
@@ -104,13 +88,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="46dp"
         android:background="@color/steam_oscuro_peronomucho"
         android:backgroundTint="@color/steam_azul_claro"
         android:text="Registrar"
-        app:layout_constraintBottom_toTopOf="@+id/checkBoxLogin"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintBottom_toTopOf="@+id/stack"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bLogin"
         app:layout_constraintTop_toBottomOf="@+id/txtContrasenia" />
 
@@ -176,13 +159,11 @@
         android:layout_width="127dp"
         android:layout_height="66dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="61dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxLogin"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView

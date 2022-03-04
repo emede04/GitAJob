@@ -28,7 +28,6 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
         System.out.println("tamaño"+ l.size());
 
         this.activity = activity;
-
     }
 
     @Override
@@ -77,7 +76,6 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
             contenido = itemView.findViewById(id.contenido2);
             url = itemView.findViewById(id.url);
             fecha = itemView.findViewById(id.fecha);
-
         }
 
 

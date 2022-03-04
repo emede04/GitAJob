@@ -81,7 +81,7 @@ public class Db_Master extends SQLiteOpenHelper {
     }
 
 
-    public Boolean verifyUserData(String user, String password) {
+    public Boolean verifica(String user, String password) {
         //comprueba primero si existe un registro con usuario.
         SQLiteDatabase db = this.getWritableDatabase();            //importante dejar espacio entre las comillas que si no da error
         Cursor cursorpass;

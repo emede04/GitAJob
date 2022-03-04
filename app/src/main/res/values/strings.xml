@@ -9,9 +9,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="charla">Uno pensaria que la api de steam, esta bien documentada \n y lista para ser implementada por el usuario medio, por desgracia no es asi. \n
-        Asi aqui se viene una pequeña explicacion, para usar los datos de la api, necesito que tú, introduzcas tu id de steam , en el caso que no tengas escribe simplemente
-        el textHint y podras acceder a la funcionalidad de la app
+    <string name="charla">Necesito que introduczcas tu id64 de steam, si no tienes deja la de repuesto
     </string>
     <string name="idkike">76561198145225968</string>
     <string name="verifica">Verifica</string>

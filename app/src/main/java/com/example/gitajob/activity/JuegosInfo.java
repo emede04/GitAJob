@@ -23,6 +23,7 @@ import com.example.gitajob.io.HttpSteam;
 import com.example.gitajob.modelos.Game;
 import com.example.gitajob.modelos.GamesOwned;
 import com.example.gitajob.modelos.NewsForApp;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,12 +32,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
+    //clase que muestra la informacion de un juego y contiene un recycle view
+    //que muestra las noticias relacionadas a ese juego,
 public class JuegosInfo extends AppCompatActivity {
     private TextView appid;
     private ImageView foto;
     private TextView nombre;
     private TextView horasjugadas;
-    private String feedlable;
 
 
     public RecyclerView listaNotcias;
@@ -80,7 +83,7 @@ public class JuegosInfo extends AppCompatActivity {
         String iduser = i.getStringExtra("iduser");
             //cargamos los datos
 
-        Glide.with(getApplicationContext())
+        Glide.with(this)
                 .load(f)
                 .into(foto);
 
@@ -89,12 +92,10 @@ public class JuegosInfo extends AppCompatActivity {
         appid.setText(id);
         setId(id);
         setIdUserActual(iduser);
-        ArrayList<NewsForApp> aListaNoticias = new ArrayList<>();
 
     }
 
     private class taskgetGameNews extends AsyncTask<String, Void, String>{
-        ArrayList<NewsForApp> listaNoticias = new ArrayList<>();
         private String titulo;
         private String url;
         private String author;
@@ -135,8 +136,7 @@ public class JuegosInfo extends AppCompatActivity {
                         author = (String) ArrayDeJuegos.getJSONObject(i).getString("author").toString();
                         contenido = (String) ArrayDeJuegos.getJSONObject(i).getString("contents").toString();
                         fecha = (String) ArrayDeJuegos.getJSONObject(i).getString("date").toString();
-                        //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
-                        //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
+
 
                         noticias = new NewsForApp(titulo,url,author,contenido,fecha);
                         System.out.println(fecha);
@@ -148,9 +148,7 @@ public class JuegosInfo extends AppCompatActivity {
 
 
 
-                //Cuando se obtienen todos los campeones, debemos avisar al adaptadorPerfil para informar
-                // de que debe actualizarse
-                //adaptadorPerfil.notifyDataSetChanged();
+
                 Log.d("mio", "salgo del post de games sin petar");
 
             }

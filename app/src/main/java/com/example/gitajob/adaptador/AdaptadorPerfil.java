@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.gitajob.R.*;
 import com.example.gitajob.modelos.Game;
 import com.example.gitajob.modelos.GamesOwned;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,18 +56,21 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
         holder.horastotales.setText(juego.getPlaytime_forever());
         holder.nombreJuego.setText(juego.getName());
         holder.idJuego.setText(juego.getAppid());
-         String id = juego.getAppid();
-            String hash = juego.getImg_logo_url();
-            String carga  = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/"+hash;
-            Uri myUri = Uri.parse(carga+".jpg");
-            Glide
-                    .with(activity)
-                    .load(myUri).centerInside()
-                    .into(holder.IconoJuego);
-            //truquito del adaptador jej
+
+
+        String id = juego.getAppid();
+        String hash = juego.getImg_logo_url();
+        String carga  = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/"+hash;
+        Uri myUri = Uri.parse(carga+".jpg");
+        Glide
+                .with(activity)
+                .load(myUri)
+                .into(holder.IconoJuego);
+        //truquito del adaptador jej
         Log.d("mio","aqui reescribo la informacion de mi objeto con mi url formada dependiendo de el id, y el hash obtenido de la api");
-            juego.setImg_logo_url(carga+".jpg");
-        }
+        juego.setImg_logo_url(carga+".jpg");
+    }
+
 
 
 
@@ -95,8 +99,12 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
             horastotales = itemView.findViewById(id.horastotales);
             idJuego = itemView.findViewById(id.appid);
 
+
+
+
         }
 
 
     }}
+
 

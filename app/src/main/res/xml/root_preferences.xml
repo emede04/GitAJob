@@ -3,11 +3,12 @@
 
     <PreferenceCategory app:title="hey">
         <EditTextPreference
-            app:defaultValue="@string/idkike"
+            app:defaultValue="false"
             app:key="nombre_usuario"
-            app:title="@string/reply_title"
+            app:title="id de steam"
             app:useSimpleSummaryProvider="true"></EditTextPreference>
     </PreferenceCategory>
+
 
 
 </PreferenceScreen>

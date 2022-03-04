@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle saved) {
-        super.onCreate(null); // <-- por ahora esta en null porque quiero que se reisntale todo el rato
+        super.onCreate(null); // <-- por ahora esta en null porque quiero que se reisntale
         setContentView(R.layout.activity_login);
         initComponents(user, password, bd, bLogin, bSignUp);
         cargarImagenes();
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()/*to get clicked view id**/) {
             case R.id.bLogin:
 
-                boolean kapasao=   bd.verifyUserData(user.getText().toString(), password.getText().toString());
+                boolean kapasao=   bd.verifica(user.getText().toString(), password.getText().toString());
                 if(kapasao){
                     Toast.makeText(this, "Pa dentro", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), DatosDeSteam.class);
@@ -67,8 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage("los datos son incorrectos")
-                            .setTitle("Error")
-                            .setIcon(android.R.drawable.ic_notification_clear_all);
+                            .setTitle("Error");
                     builder.show();
 
                 }
@@ -79,12 +78,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String texto1 = user.getText().toString();
                 String texto2 = user.getText().toString();
                 if ((texto1 == "") || (texto2 == "")) {
-                    Toast.makeText(this, "Has de rellenar todos los campos1", Toast.LENGTH_LONG + 2).show();
+                    Toast.makeText(this, "Has de rellenar todos los campos", Toast.LENGTH_LONG + 2).show();
                     user.setText("");
                     password.setText("");
                     break;
                 } else {
-                        kapasao = bd.verifyUserData(texto1,texto2);
+                        kapasao = bd.verifica(texto1,texto2);
                     if (kapasao){
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setMessage("Ya existen los datos que desea registrar")
@@ -95,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         bd.insertUsuarios(user.getText().toString(), password.getText().toString());
                         Toast.makeText(this, "bd", Toast.LENGTH_LONG + 2).show();
                         Intent intent = new Intent(getApplicationContext(), DatosDeSteam.class);
+                        intent.putExtra("user",user.getText());
                         startActivity(intent);
                         finish();
 
@@ -134,6 +134,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     }
+
 
 
 

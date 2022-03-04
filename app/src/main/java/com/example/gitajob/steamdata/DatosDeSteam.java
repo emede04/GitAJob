@@ -72,42 +72,37 @@ public class DatosDeSteam extends AppCompatActivity implements View.OnClickListe
 
 
 
-    public boolean atajo (String clave){
-        String parseao = Constantes.getSteamProfileUrlStart()+ clave +Constantes.getSteamProfileUrlEnd();
-        HttpURLConnection http;
+    public boolean atajo (String clave) {
 
-        try {
-            System.out.println(parseao);
-            URL url = new URL(parseao);
-            http = (HttpURLConnection) url.openConnection();
-            http.setRequestMethod("GET");
+            String parseao = Constantes.getSteamProfileUrlStart() + clave + Constantes.getSteamProfileUrlEnd();
+            HttpURLConnection http;
+            try {
 
-          if (http.getResponseCode() == HttpURLConnection.HTTP_BAD_GATEWAY) {
-                Log.d("mio","datos de steam :ea F");
-              AlertDialog.Builder builder = new AlertDialog.Builder(this);
-              builder.setMessage("Esa id de steam no existe")
-                      .setTitle("Error")
-                      .setIcon(android.R.drawable.ic_delete);
-              builder.show();
+                if (clave.length()<16) {
+                    Log.d("mio", "datos de steam :ea F");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("Esa id de steam no existe")
+                            .setTitle("Error")
+                            .setIcon(android.R.drawable.ic_delete);
+                    builder.show();
+                    return false;
+                } else {
+
+                    Log.d("mio", "datos de steam se obtiene las api correcta");
+                    Toast.makeText(this, "conectados", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+
+            } catch (Exception ex) {
+
+                System.out.println("ni ha entrado tu");
+                System.out.println("error :" + ex);
                 return false;
-            } else {
 
-                Log.d("mio","datos de steam se obtiene las api correcta");
-              Toast.makeText(this, "conectados", Toast.LENGTH_SHORT).show();
-                return true;
             }
-
-
-        } catch (Exception ex) {
-
-            System.out.println("ni ha entrado tu");
-            System.out.println("error :"+ex);
-            return false;
-
         }
-
-
 
     }
 
-}
+
