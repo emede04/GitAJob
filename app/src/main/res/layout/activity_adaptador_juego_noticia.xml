@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
 
-    android:layout_height="383dp" android:layout_width="383dp">
+    android:layout_height="205dp" android:layout_width="match_parent">
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="383dp"
-        android:layout_height="383dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:background="@android:color/transparent"
 
         android:paddingLeft="10dp"
@@ -19,64 +19,76 @@
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="9dp">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="404dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
             <TextView
                 android:id="@+id/titulo"
-                android:layout_width="383dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
                 android:text="TextView"
-                android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textColor="@color/steam_azul_claro"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/autor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.107" />
+                app:layout_constraintVertical_bias="0.185" />
 
             <TextView
                 android:id="@+id/autor"
-                android:layout_width="383dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="33dp"
 
-                android:layout_marginTop="21dp"
-                android:layout_marginEnd="320dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginEnd="40dp"
                 android:text="TextView"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/contenido2"
+                android:textColor="#ED0B0B"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titulo" />
+                app:layout_constraintStart_toEndOf="@+id/titulo"
+                app:layout_constraintTop_toTopOf="@+id/titulo"
+                app:layout_constraintVertical_bias="0.148" />
 
             <TextView
                 android:id="@+id/contenido2"
-                android:layout_width="383dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="1dp"
-
-                android:layout_marginEnd="266dp"
                 android:layout_marginBottom="16dp"
                 android:text="TextView"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.065"
+                app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titulo"
-                app:layout_constraintVertical_bias="0.782" />
+                app:layout_constraintVertical_bias="0.568" />
+
+            <TextView
+                android:id="@+id/url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="28dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/contenido2"
+                app:layout_constraintStart_toStartOf="@+id/contenido2"
+                app:layout_constraintTop_toBottomOf="@+id/contenido2" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
 
 </RelativeLayout>

@@ -326,8 +326,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String nombreUsuario = sharedPreferences.getString("nombre_usuario","Usuario");
-        Toast.makeText(this, "¡Hola "+nombreUsuario+"!", Toast.LENGTH_SHORT).show();
+        String idintroducida = sharedPreferences.getString("useractual","id");
+        Toast.makeText(this, "¡Hola "+useractual+"!", Toast.LENGTH_SHORT).show();
     }
 
 

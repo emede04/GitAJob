@@ -97,11 +97,73 @@ public class JuegosInfo extends AppCompatActivity {
         private String author;
         private String contenido;
         private String fecha;
+        @Override
+        protected String doInBackground(String... strings) {
+            Log.d("mio", "entro en taskgetGameNews");
+            String resultado = "";
+            switch (strings[0]) {
+                case "GET":
+                    resultado = conexion.cargarNoticias(getIdUserActual(),getId());
+                    break;
+                case "POST":
+                    resultado = Integer.toString(conexion.postGamesOwned(strings[1], strings[2]));
+                    break;
 
+                //ver el post execute que he borrao
+            }
+
+            return resultado;
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                if (!s.isEmpty()) {
+                    Log.d("D", "se cargan las noticias de los juegos comprobao" + s);
+                    JSONObject respuesta = new JSONObject(s);
+                    JSONObject objeto1 = respuesta.getJSONObject("appnews");
+                    JSONArray ArrayDeJuegos;
+                    ArrayDeJuegos = objeto1.getJSONArray("newsitems");
+
+                    for (int i = 0; i <ArrayDeJuegos.length(); i++) {
+                        //reccorro mi array de juegos
+
+                        titulo = (String) ArrayDeJuegos.getJSONObject(i).get("title");
+                        url = (String) ArrayDeJuegos.getJSONObject(i).get("url").toString();
+                        author = (String) ArrayDeJuegos.getJSONObject(i).get("author").toString();
+                        contenido = (String) ArrayDeJuegos.getJSONObject(i).get("contents").toString();
+                        fecha = (String) ArrayDeJuegos.getJSONObject(i).get("date").toString();
+                        //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
+                        //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
+                        noticias = new NewsForApp(titulo,url,author,contenido,fecha);
+
+                        aListaNoticias.add(noticias);
+                    }
+                    cargarNoticiasJuego();
+
+                }
+
+
+
+                //Cuando se obtienen todos los campeones, debemos avisar al adaptadorPerfil para informar
+                // de que debe actualizarse
+                //adaptadorPerfil.notifyDataSetChanged();
+                Log.d("mio", "salgo del post de games sin petar");
+
+            }
+
+            catch (JSONException e) {
+                Log.d("mio", "error en getNews");
+                System.out.println("ha petado "+e);
+            }
+        }
+
+    }
+/*
+    private class taskGetGlobalAchivement extends AsyncTask<String, Void, String>{
 
         @Override
         protected String doInBackground(String... strings) {
-            Log.d("mio", "entro en taskedGameNews");
+            Log.d("mio", "entro en taskedGlobalAchivement");
             String resultado = "";
             switch (strings[0]) {
                 case "GET":
@@ -161,15 +223,7 @@ public class JuegosInfo extends AppCompatActivity {
         }
     }
 
-    private class taskGetGlobalAchivement extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected String doInBackground(String... strings) {
-            return null;
-        }
-    }
-
-
+    */
     public String getIdUserActual() {
         return idUserActual;
     }
