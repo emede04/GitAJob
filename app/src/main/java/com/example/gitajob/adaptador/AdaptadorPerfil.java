@@ -68,7 +68,6 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
                 .into(holder.IconoJuego);
         //truquito del adaptador jej
         Log.d("mio","aqui reescribo la informacion de mi objeto con mi url formada dependiendo de el id, y el hash obtenido de la api");
-        juego.setImg_logo_url(carga+".jpg");
     }
 
 
