@@ -3,15 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="170dp"
-    android:id="@+id/root"
-
-   >
+    android:layout_height="200dp">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="413dp"
-        android:layout_height="170dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="631dp"
         android:background="@android:color/transparent"
 
@@ -23,84 +20,112 @@
         app:cardElevation="9dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_width="413dp"
+            android:layout_height="200dp">
 
+            <TextView
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="40dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="56dp"
+                android:ems="10"
+                android:text="id:"
+                android:textColor="@color/steam_azul_claro"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appid"
+                app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+            <TextView
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="86dp"
+                android:layout_height="22dp"
+
+                android:layout_marginTop="67dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:text="horas totales:"
+                android:textColor="@color/steam_azul_claro"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.106"
+                app:layout_constraintStart_toEndOf="@+id/iconoVideojuego"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.538" />
 
             <ImageView
                 android:id="@+id/iconoVideojuego"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="9dp"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/horastotales"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nombre" />
+                app:layout_constraintTop_toBottomOf="@+id/nombre"
+                app:layout_constraintVertical_bias="0.742" />
 
             <TextView
                 android:id="@+id/appid"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="87dp"
-                android:layout_marginBottom="4dp"
-                android:text="TextView"
+                android:layout_height="22dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iconoVideojuego"
-                app:layout_constraintTop_toBottomOf="@+id/horastotales"
+                app:layout_constraintHorizontal_bias="0.406"
+                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+                app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName4"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/nombre"
                 android:layout_width="wrap_content"
-                android:layout_height="29dp"
+                android:layout_height="wrap_content"
 
-                android:layout_marginStart="20dp"
-                android:text="TextView"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/teal_200"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.048"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.122" />
+                app:layout_constraintHorizontal_bias="0.027"
+                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+                app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName" />
 
             <TextView
                 android:id="@+id/horastotales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="84dp"
-                android:text="TextView"
+                android:layout_marginEnd="40dp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/appid"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iconoVideojuego"
-                app:layout_constraintTop_toBottomOf="@+id/nombre"
-                app:layout_constraintVertical_bias="0.054" />
+                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.747" />
 
             <TextView
-                android:id="@+id/dossemanas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="172dp"
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="50dp"
+                android:layout_height="19dp"
                 android:layout_marginTop="27dp"
-                android:layout_marginEnd="63dp"
-                android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/horastotales"
+                android:layout_marginBottom="147dp"
+                android:ems="10"
+                android:text="nombre: "
+                android:textColor="@color/steam_azul_claro"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/nombre"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.058"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

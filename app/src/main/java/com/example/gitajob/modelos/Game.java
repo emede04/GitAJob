@@ -13,7 +13,6 @@ public class Game {
     String playtime_linux_forever;
 
 
-
     public Game(String appid,
                 String name,
                 String playtime_forever,
@@ -25,6 +24,20 @@ public class Game {
         this.playtime_forever = playtime_forever;
         this.img_logo_url = img_logo_url;
     }
+
+    public Game(String appid,
+                String name,
+                String playtime_forever,
+                String img_icon_url, String img_logo_url,String playtime_2weeks)
+    {
+        this.appid = appid;
+        this.img_icon_url = img_icon_url;
+        this.name = name;
+        this.playtime_forever = playtime_forever;
+        this.img_logo_url = img_logo_url;
+        this.playtime_2weeks = playtime_2weeks;
+    }
+
 
 
     public String getAppid() {

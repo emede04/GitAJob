@@ -54,6 +54,8 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
         Game juego = listaJuegos.get(position);
         holder.horastotales.setText(juego.getPlaytime_forever());
         holder.nombreJuego.setText(juego.getName());
+        holder.idJuego.setText(juego.getAppid());
+
 
             String id = juego.getAppid();
             String hash = juego.getImg_logo_url();
@@ -61,7 +63,7 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
             Uri myUri = Uri.parse(carga+".jpg");
             Glide
                     .with(activity)
-                    .load(myUri)
+                    .load(myUri).centerInside()
                     .into(holder.IconoJuego);
             //truquito del adaptador jej
         Log.d("mio","aqui reescribo la informacion de mi objeto con mi url formada dependiendo de el id, y el hash obtenido de la api");
@@ -84,6 +86,8 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
         ImageView IconoJuego;
         TextView nombreJuego;
         TextView horastotales;
+        TextView idJuego;
+
 
         public RecyclerHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +95,7 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
             IconoJuego = itemView.findViewById(id.iconoVideojuego);
             nombreJuego = itemView.findViewById(id.nombre);
             horastotales = itemView.findViewById(id.horastotales);
+            idJuego = itemView.findViewById(id.appid);
 
 
 

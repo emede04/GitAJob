@@ -134,7 +134,8 @@ public class MainActivity extends AppCompatActivity {
                         String personaname = arraydemiuser.getJSONObject(i).getString("personaname");
                         String avatarfull = arraydemiuser.getJSONObject(i).getString("avatarfull");
                         String realname = arraydemiuser.getJSONObject(i).getString("realname");
-                        Log.d("mio", "illo que pasa con real name de los cojones" + realname);
+
+
                         if (realname == null) {
                             realname = "Sin Nombre";
                             usuario = new PlayerSummaries(steamid, communityvisibilitystate, personaname, avatarfull, realname);
@@ -182,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         private String appid;
         private String name;
         private String playtime_forever;
+        private String playtime_2weeks;
         private String img_icon_url;
         private String img_logo_url;
 
@@ -230,13 +232,18 @@ public class MainActivity extends AppCompatActivity {
 
                         appid = ArrayDeJuegos.getJSONObject(i).get("appid").toString();
                         name = (String) ArrayDeJuegos.getJSONObject(i).get("name");
-                        playtime_forever = (String) ArrayDeJuegos.getJSONObject(i).get("playtime_forever").toString();
-                        img_icon_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_icon_url").toString();
-                        img_logo_url = (String) ArrayDeJuegos.getJSONObject(i).get("img_logo_url").toString();
+                        playtime_forever = (String) ArrayDeJuegos.getJSONObject(i).getString("playtime_forever").toString();
+                        img_icon_url = (String) ArrayDeJuegos.getJSONObject(i).getString("img_icon_url").toString();
+                        img_logo_url = (String) ArrayDeJuegos.getJSONObject(i).getString("img_logo_url").toString();
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
                         miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);
-                        listaGames.add(miJuego);
+
+
+                            miJuego = new Game(appid, name, playtime_forever, img_icon_url, img_logo_url);
+                            listaGames.add(miJuego);
+
+
                     }
                 }
                 gamesOwned = new GamesOwned(numero, listaGames);
@@ -250,7 +257,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("mio", "salgo del post de games sin petar :D");
 
             } catch (JSONException e) {
-                Log.d("mio", "error en taskgetGames");
+                Log.d("mio", "error en taskgetGames"+e);
+                playtime_2weeks = "";
             }
         }
 
