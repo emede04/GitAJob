@@ -1,6 +1,7 @@
 package com.example.gitajob.adaptador;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,12 +61,14 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
 
         String id = juego.getAppid();
         String hash = juego.getImg_logo_url();
+        System.out.println(hash);
         String carga  = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/"+hash;
         Uri myUri = Uri.parse(carga+".jpg");
         Glide
                 .with(activity)
                 .load(myUri)
                 .into(holder.IconoJuego);
+        juego.setImg_icon_url(carga+".jpg");
         //truquito del adaptador jej
         Log.d("mio","aqui reescribo la informacion de mi objeto con mi url formada dependiendo de el id, y el hash obtenido de la api");
     }

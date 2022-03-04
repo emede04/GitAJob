@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, JuegosInfo.class);
                 i.putExtra("id", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getAppid());
                 i.putExtra("nombre", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getName());
-                i.putExtra("icono", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getImg_logo_url());
+                i.putExtra("icono", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getImg_icon_url());
                 i.putExtra("horas", gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getPlaytime_forever());
                 i.putExtra("iduser", getUseractual());
                 System.out.println("probando a ver si la pasa info o no"+gamesOwned.getListaDeVideojuegos().get(listaJuegos.getChildAdapterPosition(view)).getImg_logo_url());
