@@ -1,7 +1,9 @@
 package com.example.gitajob.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -34,6 +36,7 @@ public class JuegosInfo extends AppCompatActivity {
     private ImageView foto;
     private TextView nombre;
     private TextView horasjugadas;
+    private String feedlable;
 
 
     public RecyclerView listaNotcias;
@@ -127,15 +130,16 @@ public class JuegosInfo extends AppCompatActivity {
                     for (int i = 0; i <ArrayDeJuegos.length(); i++) {
                         //reccorro mi array de juegos
 
-                        titulo = (String) ArrayDeJuegos.getJSONObject(i).get("title");
-                        url = (String) ArrayDeJuegos.getJSONObject(i).get("url").toString();
-                        author = (String) ArrayDeJuegos.getJSONObject(i).get("author").toString();
-                        contenido = (String) ArrayDeJuegos.getJSONObject(i).get("contents").toString();
-                        fecha = (String) ArrayDeJuegos.getJSONObject(i).get("date").toString();
+                        titulo = (String) ArrayDeJuegos.getJSONObject(i).getString("title");
+                        url = (String) ArrayDeJuegos.getJSONObject(i).getString("url").toString();
+                        author = (String) ArrayDeJuegos.getJSONObject(i).getString("author").toString();
+                        contenido = (String) ArrayDeJuegos.getJSONObject(i).getString("contents").toString();
+                        fecha = (String) ArrayDeJuegos.getJSONObject(i).getString("date").toString();
                         //guardamos el objeto como atributo para que puedan interactural todos los metodos de la clase
                         //da null por un motivo que no entiendo si lo saco de aqui pero deberia entenderlo es dura la vida gente
-                        noticias = new NewsForApp(titulo,url,author,contenido,fecha);
 
+                        noticias = new NewsForApp(titulo,url,author,contenido,fecha);
+                        System.out.println(fecha);
                         aListaNoticias.add(noticias);
                     }
                     cargarNoticiasJuego();
@@ -224,6 +228,7 @@ public class JuegosInfo extends AppCompatActivity {
     }
 
     */
+
     public String getIdUserActual() {
         return idUserActual;
     }
@@ -245,10 +250,26 @@ public class JuegosInfo extends AppCompatActivity {
         listaNotcias = (RecyclerView) findViewById(R.id.rListaNoticias);
         adaptadorJuegos = new AdapatadorJuegos(aListaNoticias,this);//cargo el adaptador con la lista de los objetos
         listaNotcias.setAdapter(adaptadorJuegos);
+        new ItemTouchHelper(elementotocado).attachToRecyclerView(listaNotcias);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this ,1);
         listaNotcias.setLayoutManager(gridLayoutManager);
 
     }
+
+    ItemTouchHelper.SimpleCallback elementotocado = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            aListaNoticias.remove(viewHolder.getAdapterPosition());
+            adaptadorJuegos.notifyDataSetChanged();
+        }
+    };
+
+
 
 
     }

@@ -8,9 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gitajob.R;
+import com.example.gitajob.R.*;
 import com.example.gitajob.modelos.NewsForApp;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
     @NonNull
     @Override
     public RecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_adaptador_juego_noticia, parent, false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(layout.activity_adaptador_juego_noticia, parent, false);
         RecyclerHolder recyclerHolder = new RecyclerHolder(vista);
         vista.setOnClickListener(this);
         return recyclerHolder;
@@ -52,6 +53,7 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
         holder.autor.setText(n.getAuthor());
         holder.contenido.setText(n.getContenido());
         holder.titulo.setText(n.getTitulo());;
+        holder.url.setText(n.getFecha());
     }
 
     @Override
@@ -59,22 +61,29 @@ public class AdapatadorJuegos extends  RecyclerView.Adapter<AdapatadorJuegos.Rec
         return listanotis.size();
     }
 
-    //TODO -FALTA GENERAR ACOMODAR EL RECYCLER
     public class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView autor;
         TextView titulo;
         TextView contenido;
+        TextView fecha;
+        TextView url;
+
 
         public RecyclerHolder(@NonNull View itemView) {
             super(itemView);
 
-            autor = itemView.findViewById(R.id.autor);
-            titulo = itemView.findViewById(R.id.titulo);
-            contenido = itemView.findViewById(R.id.contenido2);
-
+            autor = itemView.findViewById(id.autor);
+            titulo = itemView.findViewById(id.titulo);
+            contenido = itemView.findViewById(id.contenido2);
+            url = itemView.findViewById(id.url);
+            fecha = itemView.findViewById(id.fecha);
 
         }
 
 
     }
+    //delete on swipe
+
+
+
 }

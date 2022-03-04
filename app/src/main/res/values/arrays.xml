@@ -1,0 +1,19 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Id de linkeriyo</item>
+        <item>Id de lorenzo</item>
+        <item>Id de un tio con mucho dinero</item>
+        <item>Id de lorenzo</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item></item>
+        <item>76561197960434622</item>
+        <item>reply_all</item>
+        <item>reply_all</item>
+
+    </string-array>
+
+
+</resources>

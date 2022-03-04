@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <PreferenceCategory app:title="hey">
+        <EditTextPreference
+            app:defaultValue="@string/idkike"
+            app:key="nombre_usuario"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true"></EditTextPreference>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

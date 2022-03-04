@@ -6,7 +6,7 @@ public class NewsForApp {
     private String author;
     private String contenido;
     private String fecha;
-
+    private String feedlable;
     public NewsForApp(String titulo, String url, String author, String contenido, String fecha) {
         this.titulo = titulo;
         this.url = url;

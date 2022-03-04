@@ -55,9 +55,7 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
         holder.horastotales.setText(juego.getPlaytime_forever());
         holder.nombreJuego.setText(juego.getName());
         holder.idJuego.setText(juego.getAppid());
-
-
-            String id = juego.getAppid();
+         String id = juego.getAppid();
             String hash = juego.getImg_logo_url();
             String carga  = "https://media.steampowered.com/steamcommunity/public/images/apps/" + id + "/"+hash;
             Uri myUri = Uri.parse(carga+".jpg");
@@ -96,9 +94,6 @@ public class AdaptadorPerfil extends  RecyclerView.Adapter<AdaptadorPerfil.Recyc
             nombreJuego = itemView.findViewById(id.nombre);
             horastotales = itemView.findViewById(id.horastotales);
             idJuego = itemView.findViewById(id.appid);
-
-
-
 
         }
 

@@ -13,6 +13,10 @@
         android:theme="@style/Theme.GitAJob"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.PreferenciasActivity"
+            android:exported="false"
+            android:label="@string/title_activity_preferencias" />
+        <activity
             android:name=".activity.FullUser"
             android:exported="true" />
         <activity

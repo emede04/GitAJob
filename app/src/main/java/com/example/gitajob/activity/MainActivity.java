@@ -1,7 +1,9 @@
 package com.example.gitajob.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     HttpSteam conexion = new HttpSteam();  //creo mi conexion
     PlayerSummaries usuario;
     ImageView avatar;
+    ArrayList<Game> listaGames = new ArrayList<>();
+
     TextView user;
     TextView steamid;
     TextView state;
@@ -178,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
 
     //GetOwnedGames
     private class taskGetGames extends AsyncTask<String, Void, String> {
-        ArrayList<Game> listaGames = new ArrayList<>();
         String numero = "";
         private String appid;
         private String name;
@@ -281,6 +285,7 @@ public class MainActivity extends AppCompatActivity {
         listaJuegos = (RecyclerView) findViewById(R.id.rListaVideojuegos);
         adaptadorPerfil = new AdaptadorPerfil(gamesOwned, this); //cargo el adaptadorPerfil con el objeto
         listaJuegos.setAdapter(adaptadorPerfil);
+        new ItemTouchHelper(elementotocado).attachToRecyclerView(listaJuegos);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         listaJuegos.setLayoutManager(gridLayoutManager);
         adaptadorPerfil.setOnClickListener(new View.OnClickListener() {
@@ -316,19 +321,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void loadPreferences(){
-
-        //Todo 4. Una vez creado todo, solo debemos de preocuparnos de acceder a la información,
-        // ya  que Android se encarga del almacenamiento de los datos que introduce el usuario en
-        // la ventana de preferencias.
-
-        //Todo 4.1 Utilizamos PreferenceManager para obtener las preferencias compartidas de nuestra
-        // aplicación. TENEIS QUE TENER EN CUENTA QUE ESTE ES EL MISMO PARA TODA LA APP (PATRÓN SINGLETON)
-
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String idintroducida = sharedPreferences.getString("useractual","id");
-        Toast.makeText(this, "¡Hola "+useractual+"!", Toast.LENGTH_SHORT).show();
+        sharedPreferences.getString("id_steam","id");
     }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        Intent i = new Intent(this, PreferenciasActivity.class);
+        startActivity(i);
+        return true;
+    }
+
+
+    ItemTouchHelper.SimpleCallback elementotocado = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            listaGames.remove(viewHolder.getAdapterPosition());
+            adaptadorPerfil.notifyDataSetChanged();
+
+        }
+    };
+
+
 
 
 }
